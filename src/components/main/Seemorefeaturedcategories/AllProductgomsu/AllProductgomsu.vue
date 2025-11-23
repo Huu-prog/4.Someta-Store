@@ -74,8 +74,33 @@
           
         </div>
 
-        <div class="filter-section">
-          <h3 class="filter-title">Dịch vụ in ấn</h3>
+                <div class="filter-section">
+            <h3 class="filter-title"    @click="togglePrinting">Dịch vụ in ấn
+           <svg class="arrow-icon" :class="{ rotate: isOpens_priting }" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M10 15l5 5 5-5z"/>
+            </svg>
+          </h3>
+          
+              
+         <ul v-show="isOpens_priting" class="category-list" >
+          <router-link 
+              v-for="category in printingservices"
+              :key="category.id"
+              :to="`/dich-vu-inan/${category.id}`"
+              custom
+              v-slot="{ navigate, isActive }"
+            >
+              <li
+                @click="navigate"
+                :class="{ active: isActive }"
+              >
+                <span class="icon">{{ category.icon }}</span>
+                {{ category.name }}
+              </li>
+            </router-link>
+          </ul>
+ 
+          
         </div>
 
         <div class="filter-section">
@@ -137,7 +162,7 @@
             <!-- Overlay on hover -->
        
               <div class="image-overlay">
-             <router-link  class="active" :to="`/san-pham-silebar/${products.id}`">
+             <router-link class="active" :to="`/san-pham-gomsu/${product.id}`">
               <button 
             class="view-btn">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -153,7 +178,7 @@
 
          <!-- Product Info -->
             <div class="product-info">
-              <h3 class="product-name">Bộ ấm chén gốm sứ Bát Tràng cao cấp</h3>
+              <h3 class="product-name">{{ product.name }}</h3>
               
               <div class="product-price">
                
@@ -199,14 +224,14 @@
     </div>
     <div class="container">
         <!-- ============ CATEGORY DESCRIPTION SECTION ============ -->
-        <div class="category-description-section">
+     <div class="category-description-section" v-if="currentCategory">
             <div class="description-card">
-             <h2>{{ currentCategory.title }}</h2>
-                <div class="description-content">
-                     <p v-if="currentCategory?.title">{{  currentCategory.content }}</p> 
-                </div>
+              <h2>{{ currentCategory.title }}</h2>
+              <div class="description-content">
+                <p v-if="currentCategory?.title">{{ currentCategory.content }}</p>
+              </div>
             </div>
-        </div>
+          </div>
         <!-- ============ WHY CHOOSE US SECTION ============ -->
         <div class="why-choose-section">
             <h2>Tại Sao Chọn Chúng Tôi?</h2>
@@ -469,6 +494,7 @@ const displayedProducts = computed(() => {
 
 const isOpen = ref(false)
 const isOpens = ref(false)
+const isOpens_priting = ref(false)
   // Toggle mở/đóng
 const toggleSection = () => {
   isOpen.value = !isOpen.value
@@ -476,10 +502,14 @@ const toggleSection = () => {
 const toggleDesgin = () => {
   isOpens.value = !isOpens.value
 };
+const togglePrinting = () => {
+  isOpens_priting.value = !isOpens_priting.value
+};
 
 import { categories } from '@/components/main/Seemorefeaturedcategories/Data/products.data' // Import từ data/index.ts
 import { Import } from 'lucide-vue-next';
 import { categorizing } from '@/components/main/Seemorefeaturedcategories/Data/designservices.data'
+import { printingservices } from '@/components/main/Seemorefeaturedcategories/Data/categoriesprinting.data'
 const router = useRouter();
 // const isOpen = ref(false);
 
@@ -491,16 +521,7 @@ const handleSelectCategory = (categoryId) => {
 };
 
 const handleProductClick = (productId) => {
-  router.push(`/san-pham-silebar/${productId}`)
-}
-const handleSelectCategorizing = (categorizeId) => {
-  const categorize = categorizing.find(cat => cat.id === categorizeId);
-  if (categorize?.route) {
-    router.push(categorize.route);
-  }
-};
-const handleCategorizingClick = (productId) => {
-  router.push(`/san-pham-silebar/${productId}`)
+  router.push(`/san-pham-gomsu/${productId}`)
 }
 
 
@@ -1093,8 +1114,8 @@ const goToPage = (page) => {
     padding: 15px;
   }
   .products-grid {
-    grid-template-columns: 1fr;
-    gap: 15px;
+     grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
   }
   .filter-tabs {
     width: 100%;

@@ -72,8 +72,8 @@
  
           
         </div>
-          <div class="filter-section">
-            <h3 class="filter-title"    @click="togglePrinting">Dịch vụ in ấn
+               <div class="filter-section">
+            <h3 class="filter-title"   @click="togglePrinting">Dịch vụ in ấn
            <svg class="arrow-icon" :class="{ rotate: isOpens_priting }" viewBox="0 0 24 24" fill="currentColor">
               <path d="M10 15l5 5 5-5z"/>
             </svg>
@@ -82,9 +82,9 @@
               
          <ul v-show="isOpens_priting" class="category-list" >
           <router-link 
-              v-for="category in printingservices"
-              :key="category.id"
-              :to="`/dich-vu-inan/${category.id}`"
+              v-for="categores in printingservices"
+              :key="categores.id"
+              :to="`/dich-vu-inan/${categores.id}`"
               custom
               v-slot="{ navigate, isActive }"
             >
@@ -92,8 +92,8 @@
                 @click="navigate"
                 :class="{ active: isActive }"
               >
-                <span class="icon">{{ category.icon }}</span>
-                {{ category.name }}
+                <span class="icon">{{ categores.icon }}</span>
+                {{ categores.name }}
               </li>
             </router-link>
           </ul>
@@ -136,7 +136,7 @@
 
   
       <!-- Products Grid -->
-       <!-- <h1 style="color: orange;">Tất cả sản phẩm! Thiết kế: {{ categorizeId }}</h1> -->
+       <!-- <h1 style="color: orange;">Tất cả sản phẩm! Quà tặng: {{ categori }}</h1> -->
       <div class="products-grid">
         <div
           v-for="product in filteredProducts"
@@ -156,11 +156,11 @@
               :alt="product.name"
               class="product-image"
             />
-            
+
             <!-- Overlay on hover -->
        
               <div class="image-overlay">
-             <router-link  class="active" :to="`/san-pham-thietke/${product.id}`">
+             <router-link  class="active" :to="`/san-pham-inan/${product.id}`">
               <button 
             class="view-btn">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -452,38 +452,19 @@ import { useRouter } from 'vue-router'
 import { onMounted } from 'vue'
 import { productsGomSu } from '@/components/main/Seemorefeaturedcategories/AllProductgomsu/products-gom-su.data';
 import { productsThietke } from '@/components/main/Seemorefeaturedcategories/Dichvuthietke/products-dichvuthietke.data';
+import { productsInan } from '@/components/main/Seemorefeaturedcategories/Dichvuinan/products-dichvuinan.data';
 // import { Product } from '@/types/product.types';
 import { getProductsByCategory, getCategoryById } from '@/components/main/Seemorefeaturedcategories/Data/products.data'; // ✅ Import này
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
 
-const categorizeId = ref(route.params.categorizeId)
+const categori = ref(route.params.categori_id)
 
-// // Lọc sản phẩm
-// const filteredProducts = computed(() => {
-//   const categorizeId = route.params.categorizeId;
-  
-//   // Xử lý và thêm default value
-//   const id = Array.isArray(categorizeId) ? categorizeId[0] : (categorizeId || '');
-  
-//   console.log('🔍 Current categorizeId:', id);
-  
-//   const products = getProductsByCategory(id);
-  
-//   console.log('📦 Filtered products:', products);
-  
-//   return products;
-// });
 
-// // Lấy tên category
-// const categoryName = computed(() => {
-//   const category = getCategoryById(categorizeId.value);
-//   return category ? category.name : 'Sản phẩm';
-// });
 
 // ✅ Dùng data trực tiếp
-const products = ref(productsThietke);
+const products = ref(productsInan);
 
 const displayedProducts = computed(() => {
   const start = (currentPage.value - 1) * itemsPerPage;
@@ -506,27 +487,19 @@ const togglePrinting = () => {
 };
 
 
+
 import { categories } from '@/components/main/Seemorefeaturedcategories/Data/products.data' // Import từ data/index.ts
 import { categorizing } from '@/components/main/Seemorefeaturedcategories/Data/designservices.data'
 import { printingservices } from '@/components/main/Seemorefeaturedcategories/Data/categoriesprinting.data'
 const router = useRouter();
-// const isOpen = ref(false);
 
-const handleSelectCategory = (categorizeId) => {
-  const category = categories.find(cat => cat.id === categorizeId);
-  if (category?.route) {
-    router.push(category.route);
+
+const handleSelectCategorizing_printing = (categori) => {
+  const categorize_printing = printingservices.find(cat => cat.id === categori);
+  if (categorize_printing?.route) {
+    router.push(categorize_printing.route);
   }
 };
-const handleSelectCategorizing = (categorizeId) => {
-  const categorize = categorizing.find(cat => cat.id === categorizeId);
-  if (categorize?.route) {
-    router.push(categorize.route);
-  }
-};
-const handleProductClick = (productId) => {
-  router.push(`/san-pham-thietke/${productId}`)
-}
 
 const handlecategori_idClick = (categori_id) => {
   router.push(`/dich-vu-inan/${categori_id}`)
@@ -535,10 +508,10 @@ const handlecategori_idClick = (categori_id) => {
 
 
 watch(
-  () => route.params.categorizeId,
+  () => route.params.categori,
   (newCategoryId) => {
     console.log('🔄 Category changed to:', newCategoryId);
-    categorizeId.value = newCategoryId;
+    categori.value = newCategoryId;
     // currentPage.value = 1; // Reset về trang 1
     window.scrollTo({ top: 0, behavior: 'smooth' });
   },
@@ -546,8 +519,8 @@ watch(
 );
 
 
-// Lấy categorizeId từ route
-const currentCategoryId = computed(() => route.params.categorizeId);
+// Lấy categori_id từ route
+const currentCategoryId = computed(() => route.params.categori);
 
 // Lấy TOÀN BỘ thông tin category
 // const currentCategory = computed(() => {
@@ -559,15 +532,15 @@ const currentCategoryId = computed(() => route.params.categorizeId);
 // Filter products
 const displayedtitle = computed(() => {
   if (!currentCategoryId.value) {
-    return productsThietke;
+    return productsInan;
   }
   
-  return productsThietke.filter(product => {
-    return product.categorizeId === currentCategoryId.value;
+  return productsInan.filter(product => {
+    return product.categori === currentCategoryId.value;
   });
 });
 // Watch để debug
-watch(categorizeId, (newVal) => {
+watch(categori, (newVal) => {
   console.log('Category changed to:', newVal);
 });
 
@@ -576,10 +549,10 @@ const itemsPerPage = 15;           // 15 sản phẩm/trang (không cần ref)
 // Tổng số trang (30 sản phẩm ÷ 15 = 2 trang)
 
 const filteredProducts = computed(() => {
-  const categorizeId = route.params.categorizeId
-  const id = Array.isArray(categorizeId) ? categorizeId[0] : (categorizeId || '')
+  const categori = route.params.categori_id
+  const id = Array.isArray(categori) ? categori[0] : (categori || '')
   
-  console.log('🔵 Current categorizeId:', id)
+  console.log('🔵 Current categori:', id)
   
   const products = getProductsByCategory(id)
   
@@ -591,9 +564,10 @@ const filteredProducts = computed(() => {
   return products.slice(start, end)
 })
 
+
 const totalPages = computed(() => {
-  const categorizeId = route.params.categorizeId
-  const id = Array.isArray(categorizeId) ? categorizeId[0] : (categorizeId || '')
+  const categori = route.params.categori_id
+  const id = Array.isArray(categori) ? categori[0] : (categori || '')
   const allProducts = getProductsByCategory(id)
   return Math.ceil(allProducts.length / itemsPerPage)
 })
@@ -1134,6 +1108,7 @@ const goToPage = (page) => {
     font-size: 12px;
   }
 }
+
 
 /* // phần dưới sản phẩm */
 

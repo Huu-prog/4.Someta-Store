@@ -7,6 +7,7 @@ export { categorizing } from '@/components/main/Seemorefeaturedcategories/Data/d
 // Import products từ từng file
 import { productsGomSu } from '@/components/main/Seemorefeaturedcategories/AllProductgomsu/products-gom-su.data';
 import { productsThietke } from '@/components/main/Seemorefeaturedcategories/Dichvuthietke/products-dichvuthietke.data';
+import { productsInan } from '@/components/main/Seemorefeaturedcategories/Dichvuinan/products-dichvuinan.data';
 // import { productsThuytinh } from '@/components/main/Seemorefeaturedcategories/AllProductgomsu/products-thuy-tinh.data';
 
 // ... import thêm các category khác
@@ -15,12 +16,13 @@ import { productsThietke } from '@/components/main/Seemorefeaturedcategories/Dic
 
 export { productsGomSu};
 export { productsThietke};
+export { productsInan};
 // export { productsThuytinh};
 // Gộp tất cả products lại
 export const allProducts: Product[] = [
   ...productsGomSu,
-  ...productsThietke
-  // ...productsVinhDanh,
+  ...productsThietke,
+  ...productsInan,
   // ... spread các mảng products khác
 ];
 

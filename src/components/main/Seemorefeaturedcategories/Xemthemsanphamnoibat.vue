@@ -75,8 +75,33 @@
           
         </div>
 
-        <div class="filter-section">
-          <h3 class="filter-title">Dịch vụ in ấn</h3>
+                 <div class="filter-section">
+            <h3 class="filter-title"    @click="togglePrinting">Dịch vụ in ấn
+           <svg class="arrow-icon" :class="{ rotate: isOpens_priting }" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M10 15l5 5 5-5z"/>
+            </svg>
+          </h3>
+          
+              
+         <ul v-show="isOpens_priting" class="category-list" >
+          <router-link 
+              v-for="category in printingservices"
+              :key="category.id"
+              :to="`/dich-vu-inan/${category.id}`"
+              custom
+              v-slot="{ navigate, isActive }"
+            >
+              <li
+                @click="navigate"
+                :class="{ active: isActive }"
+              >
+                <span class="icon">{{ category.icon }}</span>
+                {{ category.name }}
+              </li>
+            </router-link>
+          </ul>
+ 
+          
         </div>
 
         <div class="filter-section">
@@ -153,7 +178,7 @@
 
           <!-- Product Info -->
             <div class="product-info">
-              <h3 class="product-name">Bộ ấm chén gốm sứ Bát Tràng cao cấp</h3>
+              <h3 class="product-name">{{ product.name }}</h3>
               
               <div class="product-price">
                 <span class="old-price">{{ product.newPrice }}</span>
@@ -442,12 +467,16 @@ import { useProductStore } from '@/components/main/Seemorefeaturedcategories/dat
 
 const isOpen = ref(false)
 const isOpens = ref(false)
+const isOpens_priting = ref(false)
   // Toggle mở/đóng
 const toggleSection = () => {
   isOpen.value = !isOpen.value
 };
 const toggleDesgin = () => {
   isOpens.value = !isOpens.value
+};
+const togglePrinting = () => {
+  isOpens_priting.value = !isOpens_priting.value
 };
 
 
@@ -456,6 +485,7 @@ const toggleDesgin = () => {
 
 import { categories } from '@/components/main/Seemorefeaturedcategories/Data/products.data' 
 import { categorizing } from '@/components/main/Seemorefeaturedcategories/Data/designservices.data'
+import { printingservices } from '@/components/main/Seemorefeaturedcategories/Data/categoriesprinting.data'
 const router = useRouter();
 
 
@@ -470,6 +500,12 @@ const handleSelectCategorizing = (categorizeId) => {
   const categorize = categorizing.find(cat => cat.id === categorizeId);
   if (categorize?.route) {
     router.push(categorize.route);
+  }
+};
+const handleSelectCategorizing_printing = (categori_id) => {
+  const categorize_printing = printingservices.find(cat => cat.id === categori_id);
+  if (categorize_printing?.route) {
+    router.push(categorize_printing.route);
   }
 };
 const store = useProductStore()
@@ -493,6 +529,9 @@ const handlecategorizeIdClick = (categorizeId) => {
   router.push(`/thiet-ke-silebary/${categorizeId}`)
 }
 
+const handlecategori_idClick = (categori_id) => {
+  router.push(`/dich-vu-inan/${categori_id}`)
+}
 
 
 
@@ -1056,8 +1095,8 @@ const goToPage = (page) => {
     padding: 15px;
   }
   .products-grid {
-    grid-template-columns: 1fr;
-    gap: 15px;
+     grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
   }
   .filter-tabs {
     width: 100%;

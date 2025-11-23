@@ -103,7 +103,7 @@
       <div class="footer-container">
         <div class="footer-bottom-content">
           <p class="copyright">
-            © 2025 Someta Store. All rights reserved.
+             &copy; {{ currentYear }} Someta Store. All rights reserved.
           </p>
           <div class="footer-bottom-links">
             <a href="#">Chính sách bảo mật</a>
@@ -119,7 +119,9 @@
 </template>
 
 <script setup>
-// No need for script in this simple footer
+import { computed } from 'vue'
+// Năm hiện tại (tự động cập nhật)
+const currentYear = computed(() => new Date().getFullYear())
 </script>
 
 <style scoped>

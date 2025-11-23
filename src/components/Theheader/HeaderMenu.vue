@@ -12,7 +12,7 @@
             <ul class="dropdown-menu">
 
               <li class="has-dropdown__child">  <router-link to="/san-pham-silebary/gom-su">Quà tặng gốm sứ</router-link>
-              <ul class="dropdown-menu__right">
+              <!-- <ul class="dropdown-menu__right">
               <li><a href="#">Ấm chén</a></li>
               <li><a href="#">Ca cốc sứ</a></li>
               <li><a href="#">Bát đĩa</a></li>
@@ -22,28 +22,28 @@
               <li><a href="#">Tranh gốm sứ</a></li>
               <li><a href="#">Khay mứt Tết bằng sứ</a></li>
             
-            </ul>
+            </ul> -->
               </li>
                 <li class="has-dropdown__child"> <router-link to="/san-pham-silebary/thuy-tinh">Quà tặng thủy tinh pha lê</router-link>
-                   <ul class="dropdown-menu__right">
+                   <!-- <ul class="dropdown-menu__right">
                 <li><a href="#">Biểu trưng pha lê</a></li>
                 <li><a href="#">Cúp pha lê</a></li>
                 <li><a href="#">Cắm bút pha lê</a></li>
                 <li><a href="#">Bình cốc thủy tinh</a></li>
             
             
-            </ul>
+            </ul> -->
                 </li>
             
               <li class="has-dropdown__child">  <router-link to="/san-pham-silebary/vinh-danh">Quà tặng vinh danh</router-link>
-               <ul class="dropdown-menu__right">
+               <!-- <ul class="dropdown-menu__right">
                 <li><a href="#">Linh vật phong thủy</a></li>
                 <li><a href="#">Biểu trưng gỗ đồng</a></li>
                 <li><a href="#">Bảng vinh danh gỗ đồng</a></li>
        
             
             
-            </ul>
+            </ul> -->
               </li>
             <li class="has-dropdown__child">
             <router-link to="/san-pham-silebary/sep">
@@ -84,25 +84,52 @@
            <li class="has-dropdown">
             <a href="#">DV Thiết Kế ấn phẩm</a>
             <ul class="dropdown-menu">
-              <li><a href="#">Thiết kế card visit</a></li>
-              <li><a href="#">Thiết kế tờ rơi</a></li>
-              <li><a href="#">Thiết kế bản hiệu</a></li>
-              <li><a href="#">Thiết kế thiệp cưới</a></li>
-              <li><a href="#">Thiết kế Menu</a></li>
+              <li>  
+                <router-link to="/thiet-ke-silebary/card-visit">
+             Thiết kế card visit
+            </router-link>
+          </li>
+              <li>  
+                <router-link to="/thiet-ke-silebary/to-roi">
+             Thiết kế tờ rơi
+            </router-link>
+          </li>
+                <li> 
+                   <router-link to="/thiet-ke-silebary/bang-ron">
+             Thiết kế bảng hiệu
+            </router-link></li>
+               <li> 
+                 <router-link to="/thiet-ke-silebary/thiep-cuoi">
+             Thiết kế thiệp cưới
+            </router-link>
+          </li>
+            <li>  
+            <router-link to="/thiet-ke-silebary/menu">
+             Thiết kế Menu
+            </router-link>
+          </li>
            
             </ul>
           </li>
              <li class="has-dropdown">
             <a href="#">DV In Ấn</a>
             <ul class="dropdown-menu">
-              <li><a href="#">In ấn tài liệu</a></li>
-              <li><a href="#">Thiết kế và in ấn quảng cáo</a></li>
-              <li><a href="#">In ấn đồ họa</a></li>
-              <li><a href="#">In ấn các chất liệu khác</a></li>
+              <li>  <router-link to="/dich-vu-inan/printing-documents">
+             In ấn tài liệu
+            </router-link></li>
+              <li><router-link to="/dich-vu-inan/Design-and-print">
+             Thiết kế và in ấn quảng cáo
+            </router-link></li>
+              <li><router-link to="/dich-vu-inan/graphic-printing">
+             In ấn đồ họa
+            </router-link></li>
+              <li><router-link to="/dich-vu-inan/Printing-on-other-materials">
+             In ấn chất liệu khác
+            </router-link></li>
             </ul>
           </li>
-         <li> <router-link to="/lien-he"><a href="#">Liên hệ</a></router-link></li>
-          <li><a href="#">Về chúng tôi</a></li>
+         <li> <router-link to="/lien-he">Liên hệ</router-link></li>
+          <li><router-link to="/about">Về chúng tôi</router-link></li>
         </ul>
       </nav>
 </template>

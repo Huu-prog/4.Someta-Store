@@ -7,10 +7,13 @@ import Productdetailstatic from '@/views/Productdetailstatic.vue'
 import Xemthemsanphamnoibat from '@/components/main/Seemorefeaturedcategories/Xemthemsanphamnoibat.vue'
 import Chitietsanphamxemthem from '@/components/main/Seemorefeaturedcategories/Chitietsanphamxemthem.vue'
 import AllProductgomsu from '@/components/main/Seemorefeaturedcategories/AllProductgomsu/AllProductgomsu.vue'
-import Chitietsanphamsilebar from '@/components/main/Seemorefeaturedcategories/AllProductgomsu/Chitietsanphamsilebar.vue'
+import Chitietsanphamgomsu from '@/components/main/Seemorefeaturedcategories/AllProductgomsu/Chitietsanphamgomsu.vue'
 import Contact from '@/views/contact.vue'
 import Dichvuthietke from '@/components/main/Seemorefeaturedcategories/Dichvuthietke/Dichvuthietke.vue'
 import Chitietsanphamthietke from '@/components/main/Seemorefeaturedcategories/Dichvuthietke/Chitietsanphamthietke.vue'
+import AllDichvuinan from '@/components/main/Seemorefeaturedcategories/Dichvuinan/AllDichvuinan.vue'
+import Chitietsanphaminan from '@/components/main/Seemorefeaturedcategories/Dichvuinan/Chitietsanphaminan.vue'
+import About from '@/components/Theheader/About.vue'
 
 
 
@@ -49,24 +52,42 @@ const routes: RouteRecordRaw[] = [
     {
     path: '/thiet-ke-silebary/:categorizeId',
     name: 'designservices',
-    component:Dichvuthietke, // ✅ Dùng chung 1 component
+    component:Dichvuthietke,
+    props: true
+  },
+      {
+    path: '/dich-vu-inan/:categori_id',
+    name: 'printingservices',
+    component:AllDichvuinan, 
     props: true
   },
    {
-    path: '/san-pham-silebar/:id',  // ← :id là tham số động
+    path: '/san-pham-gomsu/:id',  // ← :id là tham số động
     name: 'Chitietsanphamsilebar',
-    component: Chitietsanphamsilebar
+    component: Chitietsanphamgomsu
   },
    {
     path: '/san-pham-thietke/:id',  // ← :id là tham số động
     name: 'Chitietsanphamthietke',
     component: Chitietsanphamthietke
   },
+    {
+    path: '/san-pham-inan/:id',  // ← :id là tham số động
+    name: 'Chitietsanphaminan',
+    component:Chitietsanphaminan
+  },
   //trang liên hệ
    {
     path: '/lien-he',  // ← :id là tham số động
     name: 'Liên hệ',
     component: Contact
+  },
+//trang công ty
+
+    {
+    path: '/about',  // ← :id là tham số động
+    name: 'Về chúng tôi',
+    component: About
   },
 
 

@@ -4,7 +4,7 @@ import Hotlinefloating from '@/components/Theheader/Hotlinefloating .vue';
 
 import { computed, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { productsThietke } from '@/components/main/Seemorefeaturedcategories/Dichvuthietke/products-dichvuthietke.data'
+import { productsInan } from '@/components/main/Seemorefeaturedcategories/Dichvuinan/products-dichvuinan.data'
 
 
 const route = useRoute()
@@ -19,15 +19,15 @@ const productId = computed(() => {
 
 // Tìm sản phẩm theo ID
 const product = computed(() => {
-  return productsThietke.find(p => p.id === parseInt(productId.value))
+  return productsInan.find(p => p.id === parseInt(productId.value))
 })
 
 onMounted(() => {
   console.log('🔥 IMPORT CHECK:')
-  console.log('productsThietke:', productsThietke)
-  console.log('Is Array:', Array.isArray(productsThietke))
-  console.log('Length:', productsThietke?.length)
-  console.log('First 3 items:', productsThietke?.slice(0, 3))
+  console.log('productsInan:', productsInan)
+  console.log('Is Array:', Array.isArray(productsInan))
+  console.log('Length:', productsInan?.length)
+  console.log('First 3 items:', productsInan?.slice(0, 3))
   console.log('🆔 productId.value:', productId.value)
   
   if (!product.value) {
@@ -47,7 +47,7 @@ onMounted(() => {
       <span class="separator">/</span>
           <router-link to="/Xemthemsanphamnoibat">Xemthemsanphamnoibat</router-link>
                 <span class="separator">/</span>
-       <router-link :to="`/thiet-ke-silebary/${product.categoryId}`"    v-if="product" class="product-name">
+       <router-link :to="`/dich-vu-inan/${product.categoryId}`"    v-if="product" class="product-name">
   {{ product.name }}</router-link>
 
       <span class="separator" >/</span>

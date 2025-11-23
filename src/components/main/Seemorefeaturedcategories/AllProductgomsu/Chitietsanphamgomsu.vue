@@ -4,12 +4,12 @@ import Hotlinefloating from '@/components/Theheader/Hotlinefloating .vue';
 
 import { computed, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { productsGomSu } from '@/components/main/Seemorefeaturedcategories/AllProductgomsu/products-gom-su.data.ts'
-const route = useRoute()
-const router = useRouter()
+import { productsGomSu } from '@/components/main/Seemorefeaturedcategories/AllProductgomsu/products-gom-su.data'
 
-// Lấy danh sách sản phẩm (không gọi như function)
-const items = productsGomSu
+
+const route = useRoute()
+
+
 
 // Lấy ID từ route params
 const productId = computed(() => {
@@ -19,18 +19,23 @@ const productId = computed(() => {
 
 // Tìm sản phẩm theo ID
 const product = computed(() => {
-  if (!productId.value) return null
-  return items.find(p => p.id === productId.value)
+  return productsGomSu.find(p => p.id === parseInt(productId.value))
 })
 
 onMounted(() => {
+  console.log('🔥 IMPORT CHECK:')
+  console.log('productsGomSu:', productsGomSu)
+  console.log('Is Array:', Array.isArray(productsGomSu))
+  console.log('Length:', productsGomSu?.length)
+  console.log('First 3 items:', productsGomSu?.slice(0, 3))
+  console.log('🆔 productId.value:', productId.value)
+  
   if (!product.value) {
     console.error('❌ Không tìm thấy sản phẩm với ID:', productId.value)
   } else {
     console.log('✅ Sản phẩm:', product.value)
   }
 })
-
 
 </script>
 <template>
@@ -40,10 +45,13 @@ onMounted(() => {
       <router-link to="/">Trang chủ</router-link>
 
       <span class="separator">/</span>
-       <router-link to="/Xemthemsanphamnoibat">Xemthemsanphamnoibat</router-link>
-      <span class="separator">/</span>
-      
+          <router-link to="/Xemthemsanphamnoibat">Xemthemsanphamnoibat</router-link>
+                <span class="separator">/</span>
+       <router-link :to="`/thiet-ke-silebary/${product.categoryId}`"    v-if="product" class="product-name">
+  {{ product.name }}</router-link>
 
+      <span class="separator" >/</span>
+      
 
 
           <!-- <span v-if="product">{{ product.name }}</span> -->
@@ -180,7 +188,9 @@ onMounted(() => {
           <button class="btn-contact">
             <span>💬</span> Liên hệ tư vấn
           </button>
-     
+          <!-- <button class="btn-favorite">
+            <span></span>
+          </button> -->
         </div>
 
         <!-- Contact Info -->
