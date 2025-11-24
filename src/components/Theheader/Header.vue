@@ -220,7 +220,7 @@ const handleclickmessage = () => {
   color: #2563eb;
 }
 
-/* Responsive */
+/* Responsive
 @media (max-width: 768px) {
   .header-container {
     padding: 1rem;
@@ -245,7 +245,7 @@ const handleclickmessage = () => {
   .logo h1 {
     font-size: 1.25rem;
   }
-}
+} */
 
 @media (max-width: 480px) {
   .search-btn {

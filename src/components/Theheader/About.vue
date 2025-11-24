@@ -1,192 +1,611 @@
+
+
 <template>
-  <!-- Header -->
-  <header>
-    <div class="container">
-      <h1>Về Chúng Tôi</h1>
-      <p>Chúng tôi là đơn vị chuyên sản xuất – in ấn – thiết kế với đội ngũ sáng tạo, nhiệt huyết và luôn đổi mới từng ngày.
-    Sứ mệnh của chúng tôi là mang đến các sản phẩm in ấn chất lượng cao, thiết kế ấn tượng và giải pháp thương hiệu hiệu quả cho doanh nghiệp.</p>
-    </div>
-  </header>
-
-  <!-- Giới thiệu -->
-  <section>
-    <div class="container">
-      <h2 class="section-title">Chuyện của chúng tôi</h2>
-      <div class="about-content">
-        <div class="about-text">
-          <h3>Thành lập năm {{ foundingYear }}</h3>
-          <p>
-            Công ty SOMETA được thành lập với mong muốn trở thành đơn vị in ấn – thiết kế – sản xuất bao bì và ấn phẩm quảng cáo hàng đầu tại Việt Nam.
-            Bắt đầu từ một xưởng in nhỏ với vài thành viên yêu nghề, chúng tôi đã không ngừng cải tiến công nghệ, nâng cấp máy móc và mở rộng đội ngũ để đáp ứng mọi nhu cầu của khách hàng từ cá nhân đến doanh nghiệp lớn.
-            Sau nhiều năm hoạt động, chúng tôi tự hào đã có những thành viên tài năng.
-          </p>
-          <p>
-            Chúng tôi tin rằng mang đến giải pháp in ấn & thiết kế trọn gói – chuyên nghiệp – đúng tiến độ, giúp doanh nghiệp xây dựng hình ảnh thương hiệu mạnh mẽ và thu hút khách hàng..
-          </p>
-        </div>
-        <div>
-          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800" 
-               alt="Đội ngũ làm việc" class="about-img">
-        </div>
+  <div class="about-page">
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1 class="hero-title">Về Chúng Tôi</h1>
+        <p class="hero-subtitle">Someta - Đối tác tin cậy trong lĩnh vực in ấn và thiết kế chuyên nghiệp</p>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Giá trị cốt lõi -->
-  <section class="values-section">
-    <div class="container">
-      <h2 class="section-title">Giá trị cốt lõi</h2>
-      <div class="values">
-        <div class="value-card" v-for="value in coreValues" :key="value.title">
-          <i :class="value.icon"></i>
-          <h3>{{ value.title }}</h3>
-          <p>{{ value.desc }}</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Đội ngũ -->
-  <section>
-    <div class="container">
-      <h2 class="section-title">Đội ngũ của chúng tôi</h2>
-      <div class="team">
-        <div class="member" v-for="member in team" :key="member.name">
-          <img :src="member.photo" :alt="member.name">
-          <div class="member-info">
-            <h3>{{ member.name }}</h3>
-            <p>{{ member.role }}</p>
+    <!-- Company Introduction -->
+    <section class="intro-section">
+      <div class="container">
+        <div class="intro-grid">
+          <div class="intro-image">
+            <img src="@/assets/images/someta.jpg" alt="Someta Company">
+          </div>
+          <div class="intro-content">
+            <h2 class="section-title">Giới Thiệu Về Someta</h2>
+            <p class="intro-text">
+              <strong>Someta</strong> là công ty hàng đầu chuyên sản xuất và cung cấp các sản phẩm in ấn, thiết kế chuyên nghiệp với hơn 10 năm kinh nghiệm trong ngành.
+            </p>
+            <p class="intro-text">
+              Chúng tôi tự hào mang đến cho khách hàng những sản phẩm chất lượng cao, dịch vụ tận tâm và giá cả cạnh tranh nhất thị trường. Với đội ngũ nhân viên giàu kinh nghiệm và hệ thống máy móc hiện đại, Someta cam kết đáp ứng mọi nhu cầu in ấn từ cá nhân đến doanh nghiệp.
+            </p>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
+    <!-- Vision & Mission -->
+    <section class="vision-mission-section">
+      <div class="container">
+        <div class="vm-grid">
+          <div class="vm-card">
+            <div class="vm-icon">🎯</div>
+            <h3>Tầm Nhìn</h3>
+            <p>Trở thành công ty in ấn và thiết kế hàng đầu Việt Nam, mang đến giá trị vượt trội cho khách hàng thông qua chất lượng sản phẩm và dịch vụ xuất sắc.</p>
+          </div>
+          <div class="vm-card">
+            <div class="vm-icon">🚀</div>
+            <h3>Sứ Mệnh</h3>
+            <p>Cung cấp giải pháp in ấn toàn diện, sáng tạo và chuyên nghiệp, đồng hành cùng sự phát triển của khách hàng với tinh thần trách nhiệm và đổi mới.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
- 
+    <!-- Core Values -->
+    <section class="values-section">
+      <div class="container">
+        <h2 class="section-title center">Giá Trị Cốt Lõi</h2>
+        <div class="values-grid">
+          <div class="value-card">
+            <div class="value-icon">✨</div>
+            <h3>Chất Lượng</h3>
+            <p>Cam kết mang đến sản phẩm chất lượng cao nhất với quy trình kiểm soát nghiêm ngặt</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">💡</div>
+            <h3>Sáng Tạo</h3>
+            <p>Không ngừng đổi mới và sáng tạo trong từng thiết kế và sản phẩm</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">🤝</div>
+            <h3>Tận Tâm</h3>
+            <p>Phục vụ khách hàng với thái độ chuyên nghiệp và tận tình nhất</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">⚡</div>
+            <h3>Nhanh Chóng</h3>
+            <p>Giao hàng đúng hẹn với quy trình sản xuất tối ưu và hiệu quả</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-number">10+</div>
+            <div class="stat-label">Năm Kinh Nghiệm</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">5000+</div>
+            <div class="stat-label">Khách Hàng Tin Tưởng</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">50000+</div>
+            <div class="stat-label">Sản Phẩm Hoàn Thành</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">98%</div>
+            <div class="stat-label">Khách Hàng Hài Lòng</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Overview -->
+    <section class="services-overview">
+      <div class="container">
+        <h2 class="section-title center">Dịch Vụ Của Chúng Tôi</h2>
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-icon">🎨</div>
+            <h3>Thiết Kế Đồ Họa</h3>
+            <p>Thiết kế Logo, Branding, Card visit, Catalogue và mọi ấn phẩm quảng cáo chuyên nghiệp</p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">🖨️</div>
+            <h3>In Ấn Chuyên Nghiệp</h3>
+            <p>In Offset, In Kỹ Thuật Số với công nghệ hiện đại, màu sắc chuẩn xác</p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">🎁</div>
+            <h3>Quà Tặng Doanh Nghiệp</h3>
+            <p>Cung cấp đa dạng quà tặng cao cấp phục vụ cho sự kiện và khách hàng doanh nghiệp</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-choose-section">
+      <div class="container">
+        <h2 class="section-title center">Tại Sao Chọn Someta?</h2>
+        <div class="why-grid">
+          <div class="why-item">
+            <div class="why-number">01</div>
+            <h3>Chất Lượng Vượt Trội</h3>
+            <p>Sử dụng nguyên liệu nhập khẩu cao cấp, máy móc hiện đại nhất</p>
+          </div>
+          <div class="why-item">
+            <div class="why-number">02</div>
+            <h3>Giá Cả Cạnh Tranh</h3>
+            <p>Cam kết giá tốt nhất thị trường với chất lượng tương đương</p>
+          </div>
+          <div class="why-item">
+            <div class="why-number">03</div>
+            <h3>Giao Hàng Nhanh Chóng</h3>
+            <p>Quy trình sản xuất tối ưu, đảm bảo tiến độ giao hàng</p>
+          </div>
+          <div class="why-item">
+            <div class="why-number">04</div>
+            <h3>Hỗ Trợ Tận Tâm</h3>
+            <p>Đội ngũ tư vấn chuyên nghiệp, nhiệt tình hỗ trợ 24/7</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-content">
+          <h2>Sẵn Sàng Hợp Tác Cùng Someta?</h2>
+          <p>Liên hệ ngay với chúng tôi để nhận tư vấn và báo giá chi tiết</p>
+          <div class="cta-buttons">
+            <router-link to="/lien-he" class="btn btn-primary">Liên Hệ Ngay</router-link>
+            <router-link to="/Xemthemsanphamnoibat" class="btn btn-secondary">Xem Sản Phẩm</router-link>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
 </template>
 
-<script setup>
-import { ref, computed } from 'vue'
-
-// Dữ liệu cơ bản
-const foundingYear = ref(2025)
-const teamCount = ref(50)
-
-
-
-// Giá trị cốt lõi
-const coreValues = ref([
-  { icon: 'fas fa-lightbulb', title: 'Sáng tạo', desc: 'Không ngừng đổi mới trong từng ý tưởng thiết kế, từng sản phẩm in.Chúng tôi luôn tìm cách tạo nên những ấn phẩm độc đáo, hiện đại và mang dấu ấn riêng của khách hàng.' },
-  { icon: 'fas fa-users', title: 'Đồng đội', desc: 'Hợp tác – hỗ trợ – cùng nhau phát triển.Mỗi sản phẩm hoàn thiện đều là kết tinh của sự phối hợp nhịp nhàng giữa đội ngũ thiết kế, kỹ thuật in và sản xuất.' },
-  { icon: 'fas fa-heart', title: 'Đam mê', desc: 'Yêu nghề – yêu chất lượng – yêu sự hài lòng của khách hàng.Chúng tôi đặt tâm huyết vào từng đường nét, từng chi tiết để tạo ra sản phẩm đẹp nhất.' },
-  { icon: 'fas fa-shield-alt', title: 'Trách nhiệm', desc: 'Giữ chữ tín trong từng đơn hàng – từng cam kết.Khách hàng tin tưởng không chỉ vì chất lượng tốt mà còn vì quy trình làm việc minh bạch, rõ ràng và chuyên nghiệp.' }
-])
-
-// Đội ngũ
-const team = ref([
-  { name: 'Nguyễn Văn A', role: 'CEO & Founder', photo: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=800' },
-  { name: 'Trần Thị B', role: 'CTO', photo: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800' },
-  { name: 'Lê Văn C', role: 'Head of Design', photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800' },
-  { name: 'Phạm Thị D', role: 'Lead Developer', photo: 'https://images.unsplash.com/photo-158048994092c-w1b0b67a19d3?w=800' }
-])
+<script>
+export default {
+  name: 'AboutUs',
+  mounted() {
+    // Scroll to top khi vào trang
+    window.scrollTo(0, 0);
+  }
+}
 </script>
 
 <style scoped>
-/* Giữ nguyên toàn bộ CSS từ file HTML trước, chỉ thêm scoped để không ảnh hưởng toàn cục */
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; background: #f8fafc; }
-.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-
-header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  padding: 80px 0;
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-header h1 { font-size: 3.5rem; margin-bottom: 10px; }
-header p { font-size: 1.3rem; opacity: 0.9; }
 
-section { padding: 80px 0; }
-.values-section { background: #f1f5f9; }
+.about-page {
+  width: 100%;
+  overflow-x: hidden;
+}
 
-.section-title {
-  text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 50px;
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Hero Section */
+.hero-section {
   position: relative;
-}
-.section-title::after {
-  content: '';
-  width: 80px;
-  height: 4px;
-  background: #667eea;
-  position: absolute;
-  bottom: -15px;
-  left: 50%;
-  transform: translateX(-50%);
+  height: 400px;
+  background: rgb(255, 122, 33);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
 }
 
-.about-content {
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-title {
+  font-size: 4.8rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero-subtitle {
+  font-size: 2rem;
+  font-weight: 300;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Introduction Section */
+.intro-section {
+  padding: 80px 0;
+  background: #ffffff;
+}
+
+.intro-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 60px;
   align-items: center;
 }
-.about-text h3 { font-size: 1.8rem; margin-bottom: 20px; color: #444; }
-.about-text p { margin-bottom: 20px; font-size: 1.1rem; }
-.about-img {
+
+.intro-image img {
   width: 100%;
-  border-radius: 12px;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+  height: 400px;
+  object-fit: cover;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
-.values {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
+.section-title {
+  font-size: 3.6rem;
+  color: #1f2937;
+  margin-bottom: 30px;
+  font-weight: 700;
 }
-.value-card {
-  background: white;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+
+.section-title.center {
   text-align: center;
-  transition: transform 0.3s;
 }
-.value-card:hover { transform: translateY(-10px); }
-.value-card i { font-size: 3rem; color: #667eea; margin-bottom: 20px; }
-.value-card h3 { font-size: 1.5rem; margin-bottom: 15px; }
 
-.team {
+.intro-text {
+  font-size: 1.6rem;
+  line-height: 1.8;
+  color: #4b5563;
+  margin-bottom: 20px;
+}
+
+/* Vision & Mission */
+.vision-mission-section {
+  padding: 80px 0;
+  background:rgb(255, 122, 33);
+}
+
+.vm-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 40px;
 }
-.member {
-  text-align: center;
+
+.vm-card {
   background: white;
+  padding: 40px;
   border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-  transition: 0.3s;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
-.member:hover { transform: scale(1.05); }
-.member img {
-  width: 100%;
-  height: 300px;
-  object-fit: cover;
+
+.vm-icon {
+  font-size: 5rem;
+  margin-bottom: 20px;
 }
-.member-info {
-  padding: 20px;
+
+.vm-card h3 {
+  font-size: 2.4rem;
+  color: #1f2937;
+  margin-bottom: 15px;
 }
-.member-info h3 { margin-bottom: 5px; }
-.member-info p { color: #667eea; font-weight: 600; }
 
+.vm-card p {
+  font-size: 1.6rem;
+  color: #6b7280;
+  line-height: 1.7;
+}
 
+/* Core Values */
+.values-section {
+  padding: 80px 0;
+  background: #f9fafb;
+}
 
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.value-card {
+  background: white;
+  padding: 35px 25px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.value-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.value-icon {
+  font-size: 4rem;
+  margin-bottom: 20px;
+}
+
+.value-card h3 {
+  font-size: 2rem;
+  color: #1f2937;
+  margin-bottom: 12px;
+}
+
+.value-card p {
+  font-size: 1.4rem;
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+/* Stats Section */
+.stats-section {
+  padding: 80px 0;
+  background:rgb(255, 122, 33);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+}
+
+.stat-card {
+  text-align: center;
+  color: white;
+}
+
+.stat-number {
+  font-size: 5rem;
+  font-weight: 700;
+  color: #ebd725;
+  margin-bottom: 10px;
+}
+
+.stat-label {
+  font-size: 1.6rem;
+  color: #e5e7eb;
+}
+
+/* Services Overview */
+.services-overview {
+  padding: 80px 0;
+  background: white;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin-top: 50px;
+}
+
+.service-card {
+  background: #f9fafb;
+  padding: 40px 30px;
+  border-radius: 12px;
+  text-align: center;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.service-card:hover {
+  border-color: #667eea;
+  background: white;
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.1);
+}
+
+.service-icon {
+  font-size: 5rem;
+  margin-bottom: 20px;
+}
+
+.service-card h3 {
+  font-size: 2.2rem;
+  color: #1f2937;
+  margin-bottom: 15px;
+}
+
+.service-card p {
+  font-size: 1.5rem;
+  color: #6b7280;
+  line-height: 1.7;
+}
+
+/* Why Choose Us */
+.why-choose-section {
+  padding: 80px 0;
+  background: #f9fafb;
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  margin-top: 50px;
+}
+
+.why-item {
+  background: white;
+  padding: 35px;
+  border-radius: 12px;
+  border-left: 5px solid #667eea;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.why-item:hover {
+  transform: translateX(10px);
+}
+
+.why-number {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #667eea;
+  margin-bottom: 15px;
+}
+
+.why-item h3 {
+  font-size: 2.2rem;
+  color: #1f2937;
+  margin-bottom: 12px;
+}
+
+.why-item p {
+  font-size: 1.5rem;
+  color: #6b7280;
+  line-height: 1.7;
+}
+
+/* CTA Section */
+.cta-section {
+  padding: 80px 0;
+  background: rgb(255, 122, 33);
+}
+
+.cta-content {
+  text-align: center;
+  color: white;
+}
+
+.cta-content h2 {
+  font-size: 4rem;
+  margin-bottom: 20px;
+}
+
+.cta-content p {
+  font-size: 1.8rem;
+  margin-bottom: 40px;
+  opacity: 0.9;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.btn {
+  padding: 15px 40px;
+  font-size: 1.6rem;
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.btn-primary {
+  background: white;
+  color: #667eea;
+}
+
+.btn-primary:hover {
+  background: #ebd725;
+  color: #1f2937;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+.btn-secondary:hover {
+  background: white;
+  color: #667eea;
+  transform: translateY(-3px);
+}
+
+/* Responsive */
 @media (max-width: 768px) {
-  .about-content { grid-template-columns: 1fr; }
-  header h1 { font-size: 2.8rem; }
+  .hero-title {
+    font-size: 3.2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.6rem;
+  }
+
+  .intro-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .vm-grid,
+  .values-grid,
+  .stats-grid,
+  .services-grid,
+  .why-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .section-title {
+    font-size: 2.8rem;
+  }
+
+  .cta-content h2 {
+    font-size: 2.8rem;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    height: 300px;
+  }
+
+  .hero-title {
+    font-size: 2.8rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.4rem;
+  }
+
+  .section-title {
+    font-size: 2.4rem;
+  }
+
+  .intro-text,
+  .vm-card p,
+  .value-card p,
+  .service-card p,
+  .why-item p {
+    font-size: 1.4rem;
+  }
 }
 </style>
