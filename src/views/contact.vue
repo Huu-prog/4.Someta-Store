@@ -1,12 +1,93 @@
 <script setup>
-import {ref} from 'vue'
-const message = ref()
+import { reactive, ref } from 'vue'
 
-const hendleclickmessage = () => {
-   return alert ('Tính năng đang được cập nhật')
+const formData = reactive({
+  name: '',
+  phone: '',
+  email: '',
+  company: '',
+  subject: '',
+  message: ''
+})
+
+const isSubmitting = ref(false)
+const showNotification = ref(false)
+
+const formatPhoneForZalo = (phone) => {
+  phone = phone.replace(/\s+/g, '').replace(/[^\d+]/g, '')
+  if (phone.startsWith('0')) {
+    return '84' + phone.substring(1)
+  }
+  return phone
 }
 
+const createMessage = () => {
+  const subjectNames = {
+    'product': 'Tư vấn sản phẩm',
+    'order': 'Đặt hàng số lượng lớn',
+    'quote': 'Yêu cầu báo giá',
+    'support': 'Hỗ trợ kỹ thuật',
+    'other': 'Khác'
+  }
 
+  return `📋 THÔNG TIN LIÊN HỆ - SOMETA
+━━━━━━━━━━━━━━━━━━
+👤 Họ tên: ${formData.name}
+📞 SĐT: ${formData.phone}
+📧 Email: ${formData.email}
+🏢 Công ty: ${formData.company || 'Không có'}
+📌 Chủ đề: ${subjectNames[formData.subject]}
+━━━━━━━━━━━━━━━━━━
+💬 Nội dung:
+${formData.message}`
+}
+
+// Copy vào clipboard
+const copyToClipboard = async (text) => {
+  try {
+    await navigator.clipboard.writeText(text)
+    return true
+  } catch (err) {
+    // Fallback cho trình duyệt cũ
+    const textarea = document.createElement('textarea')
+    textarea.value = text
+    textarea.style.position = 'fixed'
+    textarea.style.opacity = '0'
+    document.body.appendChild(textarea)
+    textarea.select()
+    const success = document.execCommand('copy')
+    document.body.removeChild(textarea)
+    return success
+  }
+}
+
+const handleSubmit = async () => {
+  isSubmitting.value = true
+  
+  // Tạo tin nhắn
+  const message = createMessage()
+  
+  // Copy tin nhắn vào clipboard
+  const copied = await copyToClipboard(message)
+  
+  if (copied) {
+    // Hiện thông báo
+    showNotification.value = true
+    
+    // Đợi 1 giây rồi mở Zalo
+    setTimeout(() => {
+      const zaloPhone = formatPhoneForZalo('0867814249')
+      const zaloUrl = `https://zalo.me/${zaloPhone}`
+      window.open(zaloUrl, '_blank')
+      
+      // Ẩn thông báo sau 5 giây
+      setTimeout(() => {
+        showNotification.value = false
+        isSubmitting.value = false
+      }, 5000)
+    }, 1000)
+  }
+}
 </script>
 
 <template>
@@ -60,51 +141,50 @@ const hendleclickmessage = () => {
                 <h2>Gửi Tin Nhắn</h2>
                 <p class="form-subtitle">Vui lòng điền thông tin bên dưới, chúng tôi sẽ phản hồi trong 24h</p>
                 
-                <form id="contactForm">
-                    <div @click="hendleclickmessage" class="form-row">
-                        <div class="form-group">
-                            <label>Họ và tên <span class="required">*</span></label>
-                            <input  type="text" name="name" placeholder="Nguyễn Văn A" required>
-                       
-                        </div>
-                        <div class="form-group">
-                            <label>Số điện thoại <span class="required">*</span></label>
-                            <input type="tel" name="phone" placeholder="0123456789" required>
-                        </div>
-                    </div>
+                     <form @submit.prevent="handleSubmit">
+      <!-- Form giữ nguyên như cũ -->
+      <div class="form-row">
+        <div class="form-group">
+          <label>Họ và tên <span class="required">*</span></label>
+          <input type="text" v-model="formData.name" required>
+        </div>
+        <div class="form-group">
+          <label>Số điện thoại <span class="required">*</span></label>
+          <input type="tel" v-model="formData.phone" required>
+        </div>
+      </div>
 
-                    <div class="form-group">
-                        <label>Email <span class="required">*</span></label>
-                        <input type="email" name="email" placeholder="example@email.com" required>
-                    </div>
+      <div class="form-group">
+        <label>Email <span class="required">*</span></label>
+        <input type="email" v-model="formData.email" required>
+      </div>
 
-                    <div class="form-group">
-                        <label>Công ty / Tổ chức</label>
-                        <input type="text" name="company" placeholder="Tên công ty của bạn">
-                    </div>
+      <div class="form-group">
+        <label>Công ty / Tổ chức</label>
+        <input type="text" v-model="formData.company">
+      </div>
 
-                    <div class="form-group">
-                        <label>Chủ đề <span class="required">*</span></label>
-                        <select name="subject" required>
-                            <option value="">-- Chọn chủ đề --</option>
-                            <option value="product">Tư vấn sản phẩm</option>
-                            <option value="order">Đặt hàng số lượng lớn</option>
-                            <option value="quote">Yêu cầu báo giá</option>
-                            <option value="support">Hỗ trợ kỹ thuật</option>
-                            <option value="complaint">Khiếu nại</option>
-                            <option value="other">Khác</option>
-                        </select>
-                    </div>
+      <div class="form-group">
+        <label>Chủ đề <span class="required">*</span></label>
+        <select v-model="formData.subject" required>
+          <option value="">-- Chọn chủ đề --</option>
+          <option value="product">Tư vấn sản phẩm</option>
+          <option value="order">Đặt hàng số lượng lớn</option>
+          <option value="quote">Yêu cầu báo giá</option>
+          <option value="support">Hỗ trợ kỹ thuật</option>
+          <option value="other">Khác</option>
+        </select>
+      </div>
 
-                    <div class="form-group">
-                        <label>Nội dung <span class="required">*</span></label>
-                        <textarea name="message" placeholder="Nhập nội dung tin nhắn của bạn..." required></textarea>
-                    </div>
+      <div class="form-group">
+        <label>Nội dung <span class="required">*</span></label>
+        <textarea v-model="formData.message" required></textarea>
+      </div>
 
-                    <button @click="hendleclickmessage" type="submit" class="submit-btn">
-                        Gửi Tin Nhắn 
-                    </button>
-                </form>
+      <button type="submit" class="submit-btn">
+        {{ isSubmitting ? 'Đang gửi...' : 'Gửi qua Zalo' }}
+      </button>
+    </form>
             </div>
 
             <!-- Contact Details -->
