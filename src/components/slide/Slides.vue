@@ -13,9 +13,9 @@
           :style="{ backgroundImage: `url(${slide.image})` }"
         >
           <div class="slide-content">
-            <h2 class="slide-title">{{ slide.title }}</h2>
-            <p class="slide-description">{{ slide.description }}</p>
-            <button class="slide-btn">{{ slide.buttonText }}</button>
+            <!-- <h2 class="slide-title">{{ slide.title }}</h2> -->
+            <!-- <p class="slide-description">{{ slide.description }}</p> -->
+            <!-- <button class="slide-btn">{{ slide.buttonText }}</button> -->
           </div>
         </div>
       </div>
@@ -65,19 +65,19 @@ const img = (path) => {
 // Dữ liệu slides mẫu
 const slides = ref([
   {
-    image: img('banner/banner7.png'),
+    image: img('banner/banner8.jpg'),
     title: 'Bộ sưu tập mùa hè 2024',
     description: 'Khám phá những xu hướng thời trang mới nhất',
     buttonText: 'Mua ngay'
   },
   {
-    image: img('banner/2.jpg'),
+    image: img('banner/banner13.png'),
     title: 'Giảm giá đến 50%',
     description: 'Săn sale cực đã với hàng ngàn sản phẩm hot',
     buttonText: 'Xem ngay'
   },
   {
-    image: img('banner/3.jpg'),
+    image: img('banner/banner12.png'),
     title: 'Sản phẩm mới về',
     description: 'Cập nhật những mặt hàng mới nhất hàng tuần',
     buttonText: 'Khám phá'
@@ -114,7 +114,7 @@ const goToSlide = (index) => {
 const startAutoplay = () => {
   autoplayInterval = setInterval(() => {
     nextSlide();
-  }, 5000); // Chuyển slide mỗi 5 giây
+  }, 205000); // Chuyển slide mỗi 5 giây
 };
 
 const stopAutoplay = () => {
@@ -141,13 +141,13 @@ onUnmounted(() => {
   padding: 0 1rem;
 }
 img.resize {
-    width:540px; /* you can use % */
+    width:300px; /* you can use % */
     height: auto;
 }
 .slider {
   position: relative;
   width: 100%;
-  height: 40rem;
+  height: 30rem;
   overflow: clip;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
@@ -181,7 +181,7 @@ img.resize {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2));
+  /* background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)); */
 }
 
 /* Slide Content */

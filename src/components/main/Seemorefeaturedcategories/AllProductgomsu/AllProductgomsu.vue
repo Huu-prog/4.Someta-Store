@@ -138,7 +138,7 @@
 
   
       <!-- Products Grid -->
-       <h1 style="color: orange;">Tất cả sản phẩm! Quà tặng: {{ categoryId }}</h1>
+       <!-- <h1 style="color: orange;">Tất cả sản phẩm! Quà tặng: {{ categoryId }}</h1> -->
       <div class="products-grid">
         <div
           v-for="product in filteredProducts"

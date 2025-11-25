@@ -16,21 +16,12 @@ import Footer from './components/footer/Footer.vue';
 </template>
 
 <style scoped>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #f9f9f9;
-}
 
 #app {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  width: 100%;
 }
 
 .main-content {

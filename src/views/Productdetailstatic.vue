@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup >
 import Hotlinefloating from '@/components/Theheader/Hotlinefloating .vue';
 import  { products } from '@/components/main/Categoryproductsection/DataDanhmucnoibat/DataDanhmucnoibat';
 
@@ -49,7 +49,28 @@ onMounted(() => {
   product.value = products.find(p => p.id === id)
   console.log('5. Found product:', product.value)
 })
+// State cho modal
+const showContactModal = ref(false);
 
+// Số Zalo của bạn (thay bằng số thật)
+const ZALO_PHONE = '0867814249';
+
+// Xử lý đặt hàng qua Zalo
+const handleOrder = () => {
+  // Link Zalo với tin nhắn mẫu
+  const message = encodeURIComponent('Xin chào! Tôi muốn đặt hàng sản phẩm.');
+  window.open(`https://zalo.me/${ZALO_PHONE}?text=${message}`, '_blank');
+};
+
+// Hiển thị modal tư vấn
+const openContactModal = () => {
+  showContactModal.value = true;
+};
+
+// Đóng modal
+const closeContactModal = () => {
+  showContactModal.value = false;
+};
 </script>
 <template>
   <div class="product-detail-page">
@@ -100,30 +121,29 @@ onMounted(() => {
         <!-- Price -->
         <div class="price-box">
           <div class="price-label">Giá từ:</div>
-          <div class="price-main">500.000đ - 2.000.000đ</div>
+          <div class="price-main">200.000đ - 1.000.000đ</div>
           <div class="price-note">*Tùy theo gói dịch vụ</div>
         </div>
 
         <!-- Description -->
         <div class="description-box">
-          <h3>📝 Mô tả dịch vụ</h3>
-          <p>
-            Dịch vụ thiết kế logo chuyên nghiệp với đội ngũ designer giàu kinh nghiệm. 
-            Chúng tôi cam kết mang đến sản phẩm chất lượng cao, đáp ứng mọi nhu cầu 
-            của khách hàng. Logo là bộ mặt thương hiệu, chúng tôi hiểu điều đó!
-          </p>
+          <h3> Mô tả dịch vụ</h3>
+          <!-- <p>
+            
+            {{ product.content }}
+          </p> -->
         </div>
 
         <!-- Features -->
         <div class="features-box">
           <h3>✨ Điểm nổi bật</h3>
           <ul class="features-list">
-            <li>✅ Thiết kế độc quyền 100%</li>
-            <li>✅ File nguồn chất lượng cao (AI, PSD, PNG, SVG)</li>
-            <li>✅ Chỉnh sửa miễn phí đến khi hài lòng</li>
-            <li>✅ Bản quyền hoàn toàn thuộc về khách hàng</li>
-            <li>✅ Giao hàng đúng hạn cam kết</li>
-            <li>✅ Hỗ trợ tư vấn 24/7</li>
+            <li><i class="fa-solid fa-hand-point-right"></i> Thiết kế độc quyền 100%</li>
+            <li><i class="fa-solid fa-hand-point-right"></i> File nguồn chất lượng cao (AI, PSD, PNG, SVG)</li>
+            <li><i class="fa-solid fa-hand-point-right"></i> Chỉnh sửa miễn phí đến khi hài lòng</li>
+            <li><i class="fa-solid fa-hand-point-right"></i> Bản quyền hoàn toàn thuộc về khách hàng</li>
+            <li><i class="fa-solid fa-hand-point-right"></i> Giao hàng đúng hạn cam kết</li>
+            <li><i class="fa-solid fa-hand-point-right"></i> Hỗ trợ tư vấn 24/7</li>
           </ul>
         </div>
 
@@ -188,17 +208,50 @@ onMounted(() => {
 
         <!-- Action Buttons -->
         <div class="action-buttons">
-          <button class="btn-order">
-            <span>🛒</span> Đặt hàng ngay
+          <button @click="handleOrder" class="btn-order">
+            Đặt hàng ngay
           </button>
-          <button class="btn-contact">
-            <span>💬</span> Liên hệ tư vấn
+          <button  @click="openContactModal" class="btn-contact">
+          Liên hệ tư vấn
           </button>
-          <button class="btn-favorite">
-            <span>❤️</span>
-          </button>
+   
         </div>
-
+         <!-- Modal liên hệ -->
+  <Teleport to="body">
+    <Transition name="modal">
+      <div v-if="showContactModal" class="modal-overlay" @click="closeContactModal">
+        <div class="modal-content" @click.stop>
+          <button class="modal-close" @click="closeContactModal">&times;</button>
+          
+          <h3>Liên hệ tư vấn</h3>
+          
+          <div class="contact-info">
+            <div class="contact-item">
+              <strong><i class="fa-solid fa-phone"></i> Hotline:</strong>
+              <a href="tel:0123456789">0867 814 249</a>
+            </div>
+            
+            <div class="contact-item">
+              <strong><i class="fa-solid fa-comment-dots"></i> Zalo:</strong>
+              <a :href="`https://zalo.me/${ZALO_PHONE}`" target="_blank">
+                Chat ngay
+              </a>
+            </div>
+            
+            <div class="contact-item">
+              <strong><i class="fa-solid fa-envelope"></i> Email:</strong>
+              <a href="mailto:info@example.com">123someta@gmail.com</a>
+            </div>
+            
+            <div class="contact-item">
+              <strong><i class="fa-solid fa-location-dot"></i> Địa chỉ:</strong>
+              <span>Chợ Xoài Xiêm,Ngãi Xuyên,Trà cú,Trà Vinh</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Transition>
+  </Teleport>
         <!-- Contact Info -->
         <!-- <div class="contact-box">
           <div class="contact-item">
@@ -219,7 +272,7 @@ onMounted(() => {
 
     <!-- Process Section -->
     <div class="process-section">
-      <h2>🔄 Quy trình làm việc</h2>
+      <h2> Quy trình làm việc</h2>
       <div class="process-steps">
         <div class="step">
           <div class="step-number">1</div>
@@ -268,9 +321,9 @@ onMounted(() => {
         <div class="review-card">
           <div class="review-header">
             <div class="reviewer-info">
-              <div class="reviewer-avatar">N</div>
+              <div class="reviewer-avatar">H</div>
               <div>
-                <div class="reviewer-name">Nguyễn Văn A</div>
+                <div class="reviewer-name">Nguyễn Văn Hữu</div>
                 <div class="review-date">15/10/2024</div>
               </div>
             </div>
@@ -286,9 +339,9 @@ onMounted(() => {
         <div class="review-card">
           <div class="review-header">
             <div class="reviewer-info">
-              <div class="reviewer-avatar">T</div>
+              <div class="reviewer-avatar">N</div>
               <div>
-                <div class="reviewer-name">Trần Thị B</div>
+                <div class="reviewer-name">Trần Thị Nga</div>
                 <div class="review-date">10/10/2024</div>
               </div>
             </div>
@@ -304,9 +357,9 @@ onMounted(() => {
         <div class="review-card">
           <div class="review-header">
             <div class="reviewer-info">
-              <div class="reviewer-avatar">L</div>
+              <div class="reviewer-avatar">C</div>
               <div>
-                <div class="reviewer-name">Lê Minh C</div>
+                <div class="reviewer-name">Lê Minh Châu</div>
                 <div class="review-date">05/10/2024</div>
               </div>
             </div>
@@ -659,8 +712,8 @@ onMounted(() => {
 }
 
 .btn-order,
-.btn-contact,
-.btn-favorite {
+.btn-contact
+ {
   padding: 16px 24px;
   border: none;
   border-radius: 10px;
@@ -721,7 +774,7 @@ onMounted(() => {
   display: flex;
   align-items: center;
   gap: 12px;
-  color: #666;
+  color: #666666;
   font-size: 1.2rem;
 }
 
@@ -760,7 +813,7 @@ onMounted(() => {
 .step-number {
   width: 60px;
   height: 60px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: rgb(255, 122, 33);
   color: white;
   border-radius: 50%;
   display: flex;
@@ -769,7 +822,7 @@ onMounted(() => {
   font-size: 1.5rem;
   font-weight: 700;
   margin: 0 auto 15px;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 4px 15px rgb(255, 122, 33);;
 }
 
 .step-content h4 {
@@ -840,7 +893,7 @@ onMounted(() => {
 .reviewer-avatar {
   width: 45px;
   height: 45px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: rgb(255, 122, 33);
   color: white;
   border-radius: 50%;
   display: flex;
@@ -1006,5 +1059,106 @@ onMounted(() => {
   .related-section {
     padding: 30px 20px;
   }
+}
+/* Modal styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal-content {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  max-width: 500px;
+  width: 90%;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #999;
+  line-height: 1;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+}
+
+.modal-close:hover {
+  color: #333;
+}
+
+.modal-content h3 {
+  margin: 0 0 20px 0;
+  font-size: 24px;
+  color: #333;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.contact-item strong {
+  color: #ffa600;
+  font-size: 1.4rem;
+}
+
+.contact-item a {
+  color: #ff0000;
+  text-decoration: none;
+  font-size: 1.6rem;
+}
+
+.contact-item a:hover {
+  text-decoration: underline;
+}
+
+.contact-item span {
+  font-size: 16px;
+  color: #333;
+}
+
+/* Modal transitions */
+.modal-enter-active,
+.modal-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.modal-enter-from,
+.modal-leave-to {
+  opacity: 0;
+}
+
+.modal-enter-active .modal-content,
+.modal-leave-active .modal-content {
+  transition: transform 0.3s ease;
+}
+
+.modal-enter-from .modal-content,
+.modal-leave-to .modal-content {
+  transform: scale(0.9);
 }
 </style>

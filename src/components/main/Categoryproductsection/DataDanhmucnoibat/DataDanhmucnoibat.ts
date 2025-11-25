@@ -1,13 +1,14 @@
 
 
 // // Định nghĩa interface cho Product
-// export interface Product {
-//   id: number,
-//   name: string,
-//   category: string,
-//   image: string,
-//   type: string
-// }
+export interface Product {
+  id: number,
+  name: string,
+  category: string,
+  image: string,
+  type: string,
+  content:string
+}
 
 const images = import.meta.glob('@/assets/images/**/*.{png,jpg,jpeg}', { 
   eager: true,
@@ -26,6 +27,7 @@ export const products = [
     category: 'Thiết kế',
     image: img('thietke/1.png'),
     type: 'design',
+          content:"Thiết kế bảng hiệu là gì"
 
   },
     {
@@ -34,7 +36,7 @@ export const products = [
     category: 'Thiết kế',
     image: img('thietke/2.jpg'),
     type: 'design',
-
+          content:"Thiết kế bảng hiệu là gì"
   },
     {
     id: 3,
@@ -42,7 +44,7 @@ export const products = [
     category: 'Thiết kế',
     image: img('thietke/3.jpg'),
     type: 'design',
-
+          content:"Thiết kế bảng hiệu là gì"
   },
     {
     id: 4,
@@ -50,7 +52,7 @@ export const products = [
     category: 'Thiết kế',
     image: img('thietke/4.jpg'),
     type: 'design',
-
+          content:"Thiết kế bảng hiệu là gì"
   },
     {
     id: 5,
@@ -58,7 +60,7 @@ export const products = [
     category: 'In ấn',
     image: img('inan/4.jpg'),
     type: 'printing',
-
+          content:"Thiết kế bảng hiệu là gì"
   },
     {
     id: 6,
@@ -66,7 +68,7 @@ export const products = [
     category: 'In ấn',
     image: img('inan/2.jpg'),
     type: 'printing',
-
+          content:"Thiết kế bảng hiệu là gì"
   },
     {
     id: 7,
@@ -74,7 +76,7 @@ export const products = [
     category: 'In ấn',
     image: img('inan/1.jpg'),
     type: 'printing',
-
+          content:"Thiết kế bảng hiệu là gì"
   },
     {
     id: 8,
@@ -82,7 +84,7 @@ export const products = [
     category: 'In ấn',
     image: img('inan/3.jpg'),
     type: 'printing',
-
+          content:"Thiết kế bảng hiệu là gì"
   },
   {
     id: 9,
@@ -90,7 +92,7 @@ export const products = [
     category: 'Quà tặng',
     image: img('quatang/1.jpg'),
     type: 'gift',
-
+        content:"Thiết kế bảng hiệu là gì"
   },
     {
     id: 10,
@@ -98,7 +100,7 @@ export const products = [
     category: 'Quà tặng',
     image: img('quatang/2.jpg'),
     type: 'gift',
-
+          content:"Thiết kế bảng hiệu là gì"
   },
     {
     id: 11,
@@ -106,7 +108,7 @@ export const products = [
     category: 'Quà tặng',
     image: img('quatang/3.jpg'),
     type: 'gift',
-
+          content:"Thiết kế bảng hiệu là gì"
   },
     {
     id: 12,
@@ -114,7 +116,7 @@ export const products = [
     category: 'Quà tặng',
     image: img('quatang/4.jpg'),
     type: 'gift',
-
+          content:"Thiết kế bảng hiệu là gì"
   },
    {
     id: 13,
@@ -122,7 +124,7 @@ export const products = [
     category: 'Văn phòng',
     image: img('vanphong/1.jpg'),
     type: 'office',
-
+        content:"Thiết kế bảng hiệu là gì"
   },
     {
     id: 14,
@@ -130,7 +132,7 @@ export const products = [
     category: 'Văn phòng',
     image: img('vanphong/2.jpg'),
     type: 'office',
-
+          content:"Thiết kế bảng hiệu là gì"
   },
     {
     id: 15,
@@ -138,7 +140,7 @@ export const products = [
     category: 'Văn phòng',
     image: img('vanphong/3.jpg'),
     type: 'office',
-
+          content:"Thiết kế bảng hiệu là gì"
   },
     {
     id: 16,
@@ -146,7 +148,7 @@ export const products = [
     category: 'Văn phòng',
     image: img('vanphong/4.jpg'),
     type: 'office',
-
+          content:"Thiết kế bảng hiệu là gì"
   }
  
 ];

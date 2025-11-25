@@ -47,7 +47,7 @@ onMounted(() => {
       <span class="separator">/</span>
           <router-link to="/Xemthemsanphamnoibat">Xemthemsanphamnoibat</router-link>
                 <span class="separator">/</span>
-       <router-link :to="`/thiet-ke-silebary/${product.categoryId}`"    v-if="product" class="product-name">
+       <router-link :to="`/san-pham-silebary/${product.categoryId}`"    v-if="product" class="product-name">
   {{ product.name }}</router-link>
 
       <span class="separator" >/</span>
