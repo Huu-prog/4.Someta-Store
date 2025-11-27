@@ -1,6 +1,5 @@
 <script setup>
-
-import Hotlinefloating from '@/components/Theheader/Hotlinefloating .vue';
+import Hotlinefloating from '@/components/Theheader/Hotlinefloating .vue'
 
 import { computed, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
@@ -10,15 +9,16 @@ const route = useRoute()
 const router = useRouter()
 const store = useProductStore()
 
+import { ref } from 'vue'
 const product = computed(() => {
   const id = parseInt(route.params.id)
-  
+
   if (isNaN(id)) {
     console.error('❌ ID không hợp lệ:', route.params.id)
     return null
   }
-  
-  return store.products?.find(p => p.id === id) || null
+
+  return store.products?.find((p) => p.id === id) || null
 })
 
 onMounted(() => {
@@ -27,7 +27,54 @@ onMounted(() => {
   console.log('Route ID:', route.params.id)
   console.log('Product:', product.value)
 })
+// State cho modal
+const showContactModal = ref(false)
 
+// Số Zalo của bạn (thay bằng số thật)
+const ZALO_PHONE = '0867814249'
+
+// Xử lý đặt hàng qua Zalo
+const handleOrder = () => {
+  // Link Zalo với tin nhắn mẫu
+  const message = encodeURIComponent('Xin chào! Tôi muốn đặt hàng sản phẩm.')
+  window.open(`https://zalo.me/${ZALO_PHONE}?text=${message}`, '_blank')
+}
+
+// Hiển thị modal tư vấn
+const openContactModal = () => {
+  showContactModal.value = true
+}
+
+// Đóng modal
+const closeContactModal = () => {
+  showContactModal.value = false
+}
+const product_seemore = [
+  {
+    categoryId: 'gom-su',
+    title: 'Bộ ấm trà nhật bản tinh tế',
+    price: '300.000đ',
+    image: '/src/assets/images/gomsu/2.jpg',
+  },
+  {
+    categoryId: 'thuy-tinh',
+    title: 'Biểu trưng pha lê khắc laser 3D',
+    price: '500.000đ',
+    image: '/src/assets/images/thuytinh/2.jpg',
+  },
+  {
+    categoryId: 'vinh-danh',
+    title: 'Cúp vàng vinh danh cao cấp 35cm',
+    price: '400.000đ',
+    image: '/src/assets/images/vinhdanh/2.jpg',
+  },
+  {
+    categoryId: 'gom-su',
+    title: 'Ca sứ vai C',
+    price: '800.000đ',
+    image: '/src/assets/images/casuquaic/2.jpg',
+  },
+]
 </script>
 <template>
   <div class="product-detail-page">
@@ -36,10 +83,10 @@ onMounted(() => {
       <router-link to="/">Trang chủ</router-link>
 
       <span class="separator">/</span>
-       <router-link to="/Xemthemsanphamnoibat" >Xemthemsanphamnoibat</router-link>
+      <router-link to="/Xemthemsanphamnoibat">Xemthemsanphamnoibat</router-link>
       <span class="separator">/</span>
 
-          <!-- <span v-if="product">{{ product.name }}</span> -->
+      <!-- <span v-if="product">{{ product.name }}</span> -->
     </div>
 
     <!-- Main Content -->
@@ -48,23 +95,16 @@ onMounted(() => {
       <div class="image-section">
         <div class="main-image">
           <!-- <img src="./assets/images/inan/inancoc/1.jpg" alt="Thiết kế logo"> -->
-           <img 
-            v-if="product"
-            :src="product.image" 
-            :alt="product.name"
-              />
+          <img v-if="product" :src="product.image" :alt="product.name" />
 
           <!-- <div v-else class="loading">Đang tải...</div> -->
-
         </div>
-        
-       
       </div>
 
       <!-- Right - Info -->
       <div class="info-section">
         <!-- Category Badge -->
-         
+
         <!-- <span v-if="product" class="category-badge">{{ product.category }}</span> -->
 
         <!-- Product Name -->
@@ -87,9 +127,9 @@ onMounted(() => {
         <div class="description-box">
           <h3>📝 Mô tả dịch vụ</h3>
           <p>
-            Dịch vụ thiết kế logo chuyên nghiệp với đội ngũ designer giàu kinh nghiệm. 
-            Chúng tôi cam kết mang đến sản phẩm chất lượng cao, đáp ứng mọi nhu cầu 
-            của khách hàng. Logo là bộ mặt thương hiệu, chúng tôi hiểu điều đó!
+            Dịch vụ thiết kế logo chuyên nghiệp với đội ngũ designer giàu kinh nghiệm. Chúng tôi cam
+            kết mang đến sản phẩm chất lượng cao, đáp ứng mọi nhu cầu của khách hàng. Logo là bộ mặt
+            thương hiệu, chúng tôi hiểu điều đó!
           </p>
         </div>
 
@@ -108,11 +148,11 @@ onMounted(() => {
 
         <!-- Pricing Packages -->
         <!-- <div class="packages-box"> -->
-          <!-- <h3>💼 Các gói dịch vụ</h3> -->
-          
-          <!-- <div class="package-grid"> -->
-            <!-- Basic Package -->
-            <!-- <div class="package-card">
+        <!-- <h3>💼 Các gói dịch vụ</h3> -->
+
+        <!-- <div class="package-grid"> -->
+        <!-- Basic Package -->
+        <!-- <div class="package-card">
               <div class="package-header">
                 <div class="package-name">BASIC</div>
                 <div class="package-price">500.000đ</div>
@@ -127,8 +167,8 @@ onMounted(() => {
               </div>
             </div> -->
 
-            <!-- Standard Package -->
-            <!-- <div class="package-card popular">
+        <!-- Standard Package -->
+        <!-- <div class="package-card popular">
               <div class="popular-badge">PHỔ BIẾN</div>
               <div class="package-header">
                 <div class="package-name">STANDARD</div>
@@ -145,8 +185,8 @@ onMounted(() => {
               </div>
             </div> -->
 
-            <!-- Premium Package -->
-            <!-- <div class="package-card">
+        <!-- Premium Package -->
+        <!-- <div class="package-card">
               <div class="package-header">
                 <div class="package-name">PREMIUM</div>
                 <div class="package-price">2.000.000đ</div>
@@ -162,19 +202,48 @@ onMounted(() => {
                 </ul>
               </div>
             </div> -->
-          <!-- </div> -->
+        <!-- </div> -->
         <!-- </div> -->
 
         <!-- Action Buttons -->
         <div class="action-buttons">
-          <button class="btn-order">
-            <span>🛒</span> Đặt hàng ngay
-          </button>
-          <button class="btn-contact">
-            <span>💬</span> Liên hệ tư vấn
-          </button>
-   
+          <button @click="handleOrder" class="btn-order">Đặt hàng ngay</button>
+          <button @click="openContactModal" class="btn-contact">Liên hệ tư vấn</button>
         </div>
+        <!-- Modal liên hệ -->
+        <Teleport to="body">
+          <Transition name="modal">
+            <div v-if="showContactModal" class="modal-overlay" @click="closeContactModal">
+              <div class="modal-content" @click.stop>
+                <button class="modal-close" @click="closeContactModal">&times;</button>
+
+                <h3>Liên hệ tư vấn</h3>
+
+                <div class="contact-info">
+                  <div class="contact-item">
+                    <strong><i class="fa-solid fa-phone"></i> Hotline:</strong>
+                    <a href="tel:0123456789">0867 814 249</a>
+                  </div>
+
+                  <div class="contact-item">
+                    <strong><i class="fa-solid fa-comment-dots"></i> Zalo:</strong>
+                    <a :href="`https://zalo.me/${ZALO_PHONE}`" target="_blank"> Chat ngay </a>
+                  </div>
+
+                  <div class="contact-item">
+                    <strong><i class="fa-solid fa-envelope"></i> Email:</strong>
+                    <a href="mailto:info@example.com">123someta@gmail.com</a>
+                  </div>
+
+                  <div class="contact-item">
+                    <strong><i class="fa-solid fa-location-dot"></i> Địa chỉ:</strong>
+                    <span>Chợ Xoài Xiêm,Ngãi Xuyên,Trà cú,Trà Vinh</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Transition>
+        </Teleport>
 
         <!-- Contact Info -->
         <!-- <div class="contact-box">
@@ -196,7 +265,7 @@ onMounted(() => {
 
     <!-- Process Section -->
     <div class="process-section">
-      <h2>🔄 Quy trình làm việc</h2>
+      <h2>Quy trình làm việc</h2>
       <div class="process-steps">
         <div class="step">
           <div class="step-number">1</div>
@@ -205,9 +274,9 @@ onMounted(() => {
             <p>Trao đổi ý tưởng, phong cách và yêu cầu của bạn</p>
           </div>
         </div>
-        
+
         <div class="step-arrow">→</div>
-        
+
         <div class="step">
           <div class="step-number">2</div>
           <div class="step-content">
@@ -215,9 +284,9 @@ onMounted(() => {
             <p>Triển khai thiết kế theo brief đã thống nhất</p>
           </div>
         </div>
-        
+
         <div class="step-arrow">→</div>
-        
+
         <div class="step">
           <div class="step-number">3</div>
           <div class="step-content">
@@ -225,9 +294,9 @@ onMounted(() => {
             <p>Điều chỉnh theo ý kiến phản hồi của bạn</p>
           </div>
         </div>
-        
+
         <div class="step-arrow">→</div>
-        
+
         <div class="step">
           <div class="step-number">4</div>
           <div class="step-content">
@@ -254,9 +323,8 @@ onMounted(() => {
             <div class="review-stars">⭐⭐⭐⭐⭐</div>
           </div>
           <p class="review-text">
-            "Dịch vụ tuyệt vời! Đội ngũ làm việc chuyên nghiệp, 
-            thiết kế đẹp và đúng ý tôi muốn. Logo mới giúp thương 
-            hiệu của tôi trông chuyên nghiệp hơn rất nhiều."
+            "Dịch vụ tuyệt vời! Đội ngũ làm việc chuyên nghiệp, thiết kế đẹp và đúng ý tôi muốn.
+            Logo mới giúp thương hiệu của tôi trông chuyên nghiệp hơn rất nhiều."
           </p>
         </div>
 
@@ -272,9 +340,8 @@ onMounted(() => {
             <div class="review-stars">⭐⭐⭐⭐⭐</div>
           </div>
           <p class="review-text">
-            "Rất hài lòng với chất lượng thiết kế. Team support 
-            nhiệt tình, chỉnh sửa nhanh. Giá cả hợp lý. 
-            Sẽ quay lại sử dụng dịch vụ lần sau!"
+            "Rất hài lòng với chất lượng thiết kế. Team support nhiệt tình, chỉnh sửa nhanh. Giá cả
+            hợp lý. Sẽ quay lại sử dụng dịch vụ lần sau!"
           </p>
         </div>
 
@@ -290,9 +357,8 @@ onMounted(() => {
             <div class="review-stars">⭐⭐⭐⭐⭐</div>
           </div>
           <p class="review-text">
-            "Thiết kế sáng tạo, độc đáo. File giao đầy đủ, 
-            chất lượng cao. Quy trình làm việc rõ ràng, 
-            minh bạch. Highly recommended!"
+            "Thiết kế sáng tạo, độc đáo. File giao đầy đủ, chất lượng cao. Quy trình làm việc rõ
+            ràng, minh bạch. Highly recommended!"
           </p>
         </div>
       </div>
@@ -300,54 +366,27 @@ onMounted(() => {
 
     <!-- Related Products -->
     <div class="related-section">
-      <h2>🎨 Dịch vụ liên quan</h2>
+      <h2>Dịch vụ liên quan</h2>
       <div class="related-grid">
-        <div class="related-card">
+        <router-link
+          v-for="product in product_seemore"
+          :key="product.categoryId"
+          :to="`/san-pham-silebary/${product.categoryId}`"
+          class="related-card"
+        >
           <div class="related-image">
-            <!-- <img src="/images/service-2.jpg" alt="Thiết kế quảng cáo"> -->
+            <img :src="product.image" :alt="product.title" />
           </div>
           <div class="related-info">
-            <h4>Thiết kế quảng cáo</h4>
-            <p class="related-price">Từ 300.000đ</p>
+            <h4>{{ product.title }}</h4>
+            <p class="related-price">Từ {{ product.price }}</p>
           </div>
-        </div>
-
-        <div class="related-card">
-          <div class="related-image">
-            <!-- <img src="/images/service-3.jpg" alt="Thiết kế túi giấy"> -->
-          </div>
-          <div class="related-info">
-            <h4>Thiết kế túi giấy</h4>
-            <p class="related-price">Từ 500.000đ</p>
-          </div>
-        </div>
-
-        <div class="related-card">
-          <div class="related-image">
-            <!-- <img src="/images/service-4.jpg" alt="Thiết kế menu"> -->
-          </div>
-          <div class="related-info">
-            <h4>Thiết kế menu</h4>
-            <p class="related-price">Từ 400.000đ</p>
-          </div>
-        </div>
-
-        <div class="related-card">
-          <div class="related-image">
-            <!-- <img src="/images/service-5.jpg" alt="Thiết kế brochure"> -->
-          </div>
-          <div class="related-info">
-            <h4>Thiết kế brochure</h4>
-            <p class="related-price">Từ 800.000đ</p>
-          </div>
-        </div>
+        </router-link>
       </div>
     </div>
   </div>
-    <Hotlinefloating style="margin-right:40px ;"/>
+  <Hotlinefloating style="margin-right: 40px" />
 </template>
-
-
 
 <style scoped>
 /* ===== GENERAL ===== */
@@ -367,13 +406,13 @@ onMounted(() => {
 }
 
 .breadcrumb a {
-  color: #4285F4;
+  color: #4285f4;
   text-decoration: none;
   transition: color 0.3s;
 }
 
 .breadcrumb a:hover {
-  color: #3367D6;
+  color: #3367d6;
   text-decoration: underline;
 }
 
@@ -440,12 +479,12 @@ onMounted(() => {
 }
 
 .thumbnail:hover {
-  border-color: #4285F4;
+  border-color: #4285f4;
   transform: scale(1.05);
 }
 
 .thumbnail.active {
-  border-color: #4285F4;
+  border-color: #4285f4;
 }
 
 .thumbnail img {
@@ -465,8 +504,8 @@ onMounted(() => {
   display: inline-block;
   width: fit-content;
   padding: 8px 16px;
-  background: #E8F0FE;
-  color: #4285F4;
+  background: #e8f0fe;
+  color: #4285f4;
   border-radius: 20px;
   font-size: 0.85rem;
   font-weight: 600;
@@ -568,13 +607,13 @@ onMounted(() => {
 }
 
 .package-card:hover {
-  border-color: #4285F4;
+  border-color: #4285f4;
   transform: translateY(-5px);
   box-shadow: 0 10px 20px rgba(66, 133, 244, 0.2);
 }
 
 .package-card.popular {
-  border-color: #4285F4;
+  border-color: #4285f4;
   box-shadow: 0 5px 15px rgba(66, 133, 244, 0.2);
 }
 
@@ -582,7 +621,7 @@ onMounted(() => {
   position: absolute;
   top: 15px;
   right: 15px;
-  background: #4285F4;
+  background: #4285f4;
   color: white;
   padding: 5px 12px;
   border-radius: 20px;
@@ -636,8 +675,7 @@ onMounted(() => {
 }
 
 .btn-order,
-.btn-contact,
-.btn-favorite {
+.btn-contact {
   padding: 16px 24px;
   border: none;
   border-radius: 10px;
@@ -652,18 +690,18 @@ onMounted(() => {
 }
 
 .btn-order {
-  background: #4285F4;
+  background: #4285f4;
   color: white;
 }
 
 .btn-order:hover {
-  background: #3367D6;
+  background: #3367d6;
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(66, 133, 244, 0.4);
 }
 
 .btn-contact {
-  background: #34A853;
+  background: #34a853;
   color: white;
 }
 
@@ -698,7 +736,7 @@ onMounted(() => {
   display: flex;
   align-items: center;
   gap: 12px;
-  color: #666;
+  color: #666666;
   font-size: 1.2rem;
 }
 
@@ -737,7 +775,7 @@ onMounted(() => {
 .step-number {
   width: 60px;
   height: 60px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: rgb(255, 122, 33);
   color: white;
   border-radius: 50%;
   display: flex;
@@ -746,7 +784,7 @@ onMounted(() => {
   font-size: 1.5rem;
   font-weight: 700;
   margin: 0 auto 15px;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 4px 15px rgb(255, 122, 33);
 }
 
 .step-content h4 {
@@ -763,7 +801,7 @@ onMounted(() => {
 
 .step-arrow {
   font-size: 2rem;
-  color: #4285F4;
+  color: #4285f4;
   font-weight: 700;
 }
 
@@ -817,7 +855,7 @@ onMounted(() => {
 .reviewer-avatar {
   width: 45px;
   height: 45px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: rgb(255, 122, 33);
   color: white;
   border-radius: 50%;
   display: flex;
@@ -839,7 +877,7 @@ onMounted(() => {
 }
 
 .review-stars {
-  color: #FFA000;
+  color: #ffa000;
   font-size: 1.1rem;
 }
 
@@ -983,5 +1021,106 @@ onMounted(() => {
   .related-section {
     padding: 30px 20px;
   }
+}
+/* Modal styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal-content {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  max-width: 500px;
+  width: 90%;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #999;
+  line-height: 1;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+}
+
+.modal-close:hover {
+  color: #333;
+}
+
+.modal-content h3 {
+  margin: 0 0 20px 0;
+  font-size: 24px;
+  color: #333;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.contact-item strong {
+  color: #ffa600;
+  font-size: 1.4rem;
+}
+
+.contact-item a {
+  color: #ff0000;
+  text-decoration: none;
+  font-size: 1.6rem;
+}
+
+.contact-item a:hover {
+  text-decoration: underline;
+}
+
+.contact-item span {
+  font-size: 16px;
+  color: #333;
+}
+
+/* Modal transitions */
+.modal-enter-active,
+.modal-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.modal-enter-from,
+.modal-leave-to {
+  opacity: 0;
+}
+
+.modal-enter-active .modal-content,
+.modal-leave-active .modal-content {
+  transition: transform 0.3s ease;
+}
+
+.modal-enter-from .modal-content,
+.modal-leave-to .modal-content {
+  transform: scale(0.9);
 }
 </style>

@@ -10,10 +10,14 @@
 
       <!-- View All Link -->
       <div class="view-all-wrapper">
-        <router-link :to="categoryLink" class="view-all-link">
+        <router-link to="/san-pham-silebary/may-mac" class="view-all-link">
           Xem tất cả
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+            <path
+              fill-rule="evenodd"
+              d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+              clip-rule="evenodd"
+            />
           </svg>
         </router-link>
       </div>
@@ -28,19 +32,19 @@
         >
           <!-- Product Image -->
           <div class="product-image-box">
-            <img 
-              :src="khachHangProducts.image" 
-              :alt="khachHangProducts.name"
-              class="product-img"
-            />
+            <img :src="khachHangProducts.image" :alt="khachHangProducts.name" class="product-img" />
             <div class="image-overlay">
-              <button class="quick-view-btn">
+              <!-- <button class="quick-view-btn">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                  <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
-                  <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
+                  <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                  <path
+                    fill-rule="evenodd"
+                    d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+                    clip-rule="evenodd"
+                  />
                 </svg>
                 Xem nhanh
-              </button>
+              </button> -->
             </div>
           </div>
 
@@ -55,20 +59,20 @@
 </template>
 
 <script setup>
-import { defineProps } from 'vue';
-import { useRouter } from 'vue-router';
+import { defineProps } from 'vue'
+import { useRouter } from 'vue-router'
 
 // Import TẤT CẢ ảnh trong tất cả folder con (** = recursive)
 const images = import.meta.glob('@/assets/images/**/*.{png,jpg,jpeg}', {
   eager: true,
-  import: 'default'
-});
+  import: 'default',
+})
 
 // Helper - gõ đường dẫn đầy đủ
 const img = (path) => {
-  const fullPath = `/src/assets/images/${path}`;
-  return images[fullPath] || '';
-};
+  const fullPath = `/src/assets/images/${path}`
+  return images[fullPath] || ''
+}
 
 // Qùa tặng khách hàng
 const khachHangProducts = [
@@ -78,31 +82,28 @@ const khachHangProducts = [
   { id: 64, name: 'Balo khắc theo chữ yêu cầu', image: img('quatangkhachhang/4.jpg') },
   { id: 65, name: 'Balo laptop cao cấp', image: img('quatangkhachhang/5.jpg') },
   { id: 66, name: 'Bình giữ nhiệt', image: img('quatangkhachhang/7.jpg') },
-];
-
+]
 
 const props = defineProps({
   categoryName: {
     type: String,
-    required: true
+    required: true,
   },
   categoryLink: {
     type: String,
-    required: true
+    required: true,
   },
   products: {
     type: Array,
-    required: true
-  }
-});
+    required: true,
+  },
+})
 
-const router = useRouter();
+const router = useRouter()
 
-const goToProduct = (gomSuProducts) => {
-  router.push(`/san-pham/${gomSuProducts}`);
-};
-
-
+// const goToProduct = (gomSuProducts) => {
+//   router.push(`/san-pham/${gomSuProducts}`)
+// }
 </script>
 
 <style scoped>

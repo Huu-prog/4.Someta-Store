@@ -10,10 +10,14 @@
 
       <!-- View All Link -->
       <div class="view-all-wrapper">
-        <router-link :to="categoryLink" class="view-all-link">
+        <router-link to="/san-pham-silebary/theo-muc-gia" class="view-all-link">
           Xem tất cả
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+            <path
+              fill-rule="evenodd"
+              d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+              clip-rule="evenodd"
+            />
           </svg>
         </router-link>
       </div>
@@ -28,19 +32,23 @@
         >
           <!-- Product Image -->
           <div class="product-image-box">
-            <img 
-              :src="doanhNghiepProducts.image" 
+            <img
+              :src="doanhNghiepProducts.image"
               :alt="doanhNghiepProducts.name"
               class="product-img"
             />
             <div class="image-overlay">
-              <button class="quick-view-btn">
+              <!-- <button class="quick-view-btn">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                  <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
-                  <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
+                  <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                  <path
+                    fill-rule="evenodd"
+                    d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+                    clip-rule="evenodd"
+                  />
                 </svg>
                 Xem nhanh
-              </button>
+              </button> -->
             </div>
           </div>
 
@@ -55,40 +63,62 @@
 </template>
 
 <script setup>
-import { defineProps } from 'vue';
-import { useRouter } from 'vue-router';
+import { defineProps } from 'vue'
+import { useRouter } from 'vue-router'
 
 const doanhNghiepProducts = [
-  { id: 51, name: 'Bộ quà tặng doanh nghiệp', image: 'https://images.unsplash.com/photo-1513201099705-a9746e1e201f?w=400' },
-  { id: 52, name: 'Hộp quà tặng cao cấp', image: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=400' },
-  { id: 53, name: 'Túi quà tặng doanh nghiệp', image: 'https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?w=400' },
-  { id: 54, name: 'Bộ quà tết doanh nghiệp', image: 'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=400' },
-  { id: 55, name: 'Quà tặng khách hàng VIP', image: 'https://images.unsplash.com/photo-1549298916-acc8271f8b8d?w=400' },
-  { id: 56, name: 'Hamper quà tặng', image: 'https://images.unsplash.com/photo-1511735111819-9a3f7709049c?w=400' },
-];
+  {
+    id: 51,
+    name: 'Bộ quà tặng doanh nghiệp',
+    image: 'https://images.unsplash.com/photo-1513201099705-a9746e1e201f?w=400',
+  },
+  {
+    id: 52,
+    name: 'Hộp quà tặng cao cấp',
+    image: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=400',
+  },
+  {
+    id: 53,
+    name: 'Túi quà tặng doanh nghiệp',
+    image: 'https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?w=400',
+  },
+  {
+    id: 54,
+    name: 'Bộ quà tết doanh nghiệp',
+    image: 'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=400',
+  },
+  {
+    id: 55,
+    name: 'Quà tặng khách hàng VIP',
+    image: 'https://images.unsplash.com/photo-1549298916-acc8271f8b8d?w=400',
+  },
+  {
+    id: 56,
+    name: 'Hamper quà tặng',
+    image: 'https://images.unsplash.com/photo-1511735111819-9a3f7709049c?w=400',
+  },
+]
 
 const props = defineProps({
   categoryName: {
     type: String,
-    required: true
+    required: true,
   },
   categoryLink: {
     type: String,
-    required: true
+    required: true,
   },
   products: {
     type: Array,
-    required: true
-  }
-});
+    required: true,
+  },
+})
 
-const router = useRouter();
+const router = useRouter()
 
-const goToProduct = (gomSuProducts) => {
-  router.push(`/san-pham/${gomSuProducts}`);
-};
-
-
+// const goToProduct = (gomSuProducts) => {
+//   router.push(`/san-pham/${gomSuProducts}`);
+// };
 </script>
 
 <style scoped>

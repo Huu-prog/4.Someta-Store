@@ -1,4 +1,5 @@
 // data/products-gom-su.data.ts
+
 import type { Product } from '@/types/product.types';
 const images = import.meta.glob('@/assets/images/**/*.{png,jpg,jpeg}', {
   eager: true,

@@ -1,6 +1,6 @@
-<script setup >
-import Hotlinefloating from '@/components/Theheader/Hotlinefloating .vue';
-import  { products } from '@/components/main/Categoryproductsection/DataDanhmucnoibat/DataDanhmucnoibat';
+<script setup>
+import Hotlinefloating from '@/components/Theheader/Hotlinefloating .vue'
+import { products } from '@/components/main/Categoryproductsection/DataDanhmucnoibat/DataDanhmucnoibat'
 
 import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
@@ -21,7 +21,7 @@ onMounted(() => {
   console.log('1. route.params.id:', route.params.id)
   console.log('2. products array:', products)
   console.log('3. products length:', products.length)
-  
+
   // Thử lấy từ route.path nếu params không có
   if (!route.params.id) {
     console.log('⚠️ Trying to extract ID from path...')
@@ -29,48 +29,75 @@ onMounted(() => {
     console.log('Path parts:', pathParts)
     const idFromPath = pathParts[pathParts.length - 1]
     console.log('ID from path:', idFromPath)
-    
+
     if (idFromPath && !isNaN(Number(idFromPath))) {
       const id = Number(idFromPath)
-      product.value = products.find(p => p.id === id)
+      product.value = products.find((p) => p.id === id)
       console.log('✅ Found product using path:', product.value)
       return
     }
   }
-  
+
   const id = Number(route.params.id)
   console.log('4. Looking for ID:', id)
-  
+
   if (isNaN(id)) {
     console.error('❌ ID is NaN!')
     return
   }
-  
-  product.value = products.find(p => p.id === id)
+
+  product.value = products.find((p) => p.id === id)
   console.log('5. Found product:', product.value)
 })
 // State cho modal
-const showContactModal = ref(false);
+const showContactModal = ref(false)
 
 // Số Zalo của bạn (thay bằng số thật)
-const ZALO_PHONE = '0867814249';
+const ZALO_PHONE = '0867814249'
 
 // Xử lý đặt hàng qua Zalo
 const handleOrder = () => {
   // Link Zalo với tin nhắn mẫu
-  const message = encodeURIComponent('Xin chào! Tôi muốn đặt hàng sản phẩm.');
-  window.open(`https://zalo.me/${ZALO_PHONE}?text=${message}`, '_blank');
-};
+  const message = encodeURIComponent('Xin chào! Tôi muốn đặt hàng sản phẩm.')
+  window.open(`https://zalo.me/${ZALO_PHONE}?text=${message}`, '_blank')
+}
 
 // Hiển thị modal tư vấn
 const openContactModal = () => {
-  showContactModal.value = true;
-};
+  showContactModal.value = true
+}
 
 // Đóng modal
 const closeContactModal = () => {
-  showContactModal.value = false;
-};
+  showContactModal.value = false
+}
+
+const product_seemore = [
+  {
+    categori_id: 'Design-and-print',
+    title: 'Thiết kế quảng cáo',
+    price: '300.000đ',
+    image: '/src/assets/images/thietke/2.jpg',
+  },
+  {
+    categori_id: 'graphic-printing',
+    title: 'Thiết kế poster sự kiện',
+    price: '500.000đ',
+    image: '/src/assets/images/thietke/3.jpg',
+  },
+  {
+    categori_id: 'graphic-printing',
+    title: 'Thiết kế menu',
+    price: '400.000đ',
+    image: '/src/assets/images/thietke/4.jpg',
+  },
+  {
+    categori_id: 'Design-and-print',
+    title: 'Thiết kế brochure',
+    price: '800.000đ',
+    image: '/src/assets/images/thietke/1.png',
+  },
+]
 </script>
 <template>
   <div class="product-detail-page">
@@ -81,7 +108,7 @@ const closeContactModal = () => {
       <span v-if="product">{{ product.category }}</span>
       <span class="separator">/</span>
 
-          <span v-if="product">{{ product.name }}</span>
+      <span v-if="product">{{ product.name }}</span>
     </div>
 
     <!-- Main Content -->
@@ -90,23 +117,16 @@ const closeContactModal = () => {
       <div class="image-section">
         <div class="main-image">
           <!-- <img src="./assets/images/inan/inancoc/1.jpg" alt="Thiết kế logo"> -->
-           <img 
-            v-if="product"
-            :src="product.image" 
-            :alt="product.name"
-              />
+          <img v-if="product" :src="product.image" :alt="product.name" />
 
           <!-- <div v-else class="loading">Đang tải...</div> -->
-
         </div>
-        
-       
       </div>
 
       <!-- Right - Info -->
       <div class="info-section">
         <!-- Category Badge -->
-         
+
         <span v-if="product" class="category-badge">{{ product.category }}</span>
 
         <!-- Product Name -->
@@ -127,7 +147,7 @@ const closeContactModal = () => {
 
         <!-- Description -->
         <div class="description-box">
-          <h3> Mô tả dịch vụ</h3>
+          <h3>Mô tả dịch vụ</h3>
           <!-- <p>
             
             {{ product.content }}
@@ -139,9 +159,16 @@ const closeContactModal = () => {
           <h3>✨ Điểm nổi bật</h3>
           <ul class="features-list">
             <li><i class="fa-solid fa-hand-point-right"></i> Thiết kế độc quyền 100%</li>
-            <li><i class="fa-solid fa-hand-point-right"></i> File nguồn chất lượng cao (AI, PSD, PNG, SVG)</li>
-            <li><i class="fa-solid fa-hand-point-right"></i> Chỉnh sửa miễn phí đến khi hài lòng</li>
-            <li><i class="fa-solid fa-hand-point-right"></i> Bản quyền hoàn toàn thuộc về khách hàng</li>
+            <li>
+              <i class="fa-solid fa-hand-point-right"></i> File nguồn chất lượng cao (AI, PSD, PNG,
+              SVG)
+            </li>
+            <li>
+              <i class="fa-solid fa-hand-point-right"></i> Chỉnh sửa miễn phí đến khi hài lòng
+            </li>
+            <li>
+              <i class="fa-solid fa-hand-point-right"></i> Bản quyền hoàn toàn thuộc về khách hàng
+            </li>
             <li><i class="fa-solid fa-hand-point-right"></i> Giao hàng đúng hạn cam kết</li>
             <li><i class="fa-solid fa-hand-point-right"></i> Hỗ trợ tư vấn 24/7</li>
           </ul>
@@ -149,11 +176,11 @@ const closeContactModal = () => {
 
         <!-- Pricing Packages -->
         <!-- <div class="packages-box"> -->
-          <!-- <h3>💼 Các gói dịch vụ</h3> -->
-          
-          <!-- <div class="package-grid"> -->
-            <!-- Basic Package -->
-            <!-- <div class="package-card">
+        <!-- <h3>💼 Các gói dịch vụ</h3> -->
+
+        <!-- <div class="package-grid"> -->
+        <!-- Basic Package -->
+        <!-- <div class="package-card">
               <div class="package-header">
                 <div class="package-name">BASIC</div>
                 <div class="package-price">500.000đ</div>
@@ -168,8 +195,8 @@ const closeContactModal = () => {
               </div>
             </div> -->
 
-            <!-- Standard Package -->
-            <!-- <div class="package-card popular">
+        <!-- Standard Package -->
+        <!-- <div class="package-card popular">
               <div class="popular-badge">PHỔ BIẾN</div>
               <div class="package-header">
                 <div class="package-name">STANDARD</div>
@@ -186,8 +213,8 @@ const closeContactModal = () => {
               </div>
             </div> -->
 
-            <!-- Premium Package -->
-            <!-- <div class="package-card">
+        <!-- Premium Package -->
+        <!-- <div class="package-card">
               <div class="package-header">
                 <div class="package-name">PREMIUM</div>
                 <div class="package-price">2.000.000đ</div>
@@ -203,55 +230,48 @@ const closeContactModal = () => {
                 </ul>
               </div>
             </div> -->
-          <!-- </div> -->
+        <!-- </div> -->
         <!-- </div> -->
 
         <!-- Action Buttons -->
         <div class="action-buttons">
-          <button @click="handleOrder" class="btn-order">
-            Đặt hàng ngay
-          </button>
-          <button  @click="openContactModal" class="btn-contact">
-          Liên hệ tư vấn
-          </button>
-   
+          <button @click="handleOrder" class="btn-order">Đặt hàng ngay</button>
+          <button @click="openContactModal" class="btn-contact">Liên hệ tư vấn</button>
         </div>
-         <!-- Modal liên hệ -->
-  <Teleport to="body">
-    <Transition name="modal">
-      <div v-if="showContactModal" class="modal-overlay" @click="closeContactModal">
-        <div class="modal-content" @click.stop>
-          <button class="modal-close" @click="closeContactModal">&times;</button>
-          
-          <h3>Liên hệ tư vấn</h3>
-          
-          <div class="contact-info">
-            <div class="contact-item">
-              <strong><i class="fa-solid fa-phone"></i> Hotline:</strong>
-              <a href="tel:0123456789">0867 814 249</a>
+        <!-- Modal liên hệ -->
+        <Teleport to="body">
+          <Transition name="modal">
+            <div v-if="showContactModal" class="modal-overlay" @click="closeContactModal">
+              <div class="modal-content" @click.stop>
+                <button class="modal-close" @click="closeContactModal">&times;</button>
+
+                <h3>Liên hệ tư vấn</h3>
+
+                <div class="contact-info">
+                  <div class="contact-item">
+                    <strong><i class="fa-solid fa-phone"></i> Hotline:</strong>
+                    <a href="tel:0123456789">0867 814 249</a>
+                  </div>
+
+                  <div class="contact-item">
+                    <strong><i class="fa-solid fa-comment-dots"></i> Zalo:</strong>
+                    <a :href="`https://zalo.me/${ZALO_PHONE}`" target="_blank"> Chat ngay </a>
+                  </div>
+
+                  <div class="contact-item">
+                    <strong><i class="fa-solid fa-envelope"></i> Email:</strong>
+                    <a href="mailto:info@example.com">123someta@gmail.com</a>
+                  </div>
+
+                  <div class="contact-item">
+                    <strong><i class="fa-solid fa-location-dot"></i> Địa chỉ:</strong>
+                    <span>Chợ Xoài Xiêm,Ngãi Xuyên,Trà cú,Trà Vinh</span>
+                  </div>
+                </div>
+              </div>
             </div>
-            
-            <div class="contact-item">
-              <strong><i class="fa-solid fa-comment-dots"></i> Zalo:</strong>
-              <a :href="`https://zalo.me/${ZALO_PHONE}`" target="_blank">
-                Chat ngay
-              </a>
-            </div>
-            
-            <div class="contact-item">
-              <strong><i class="fa-solid fa-envelope"></i> Email:</strong>
-              <a href="mailto:info@example.com">123someta@gmail.com</a>
-            </div>
-            
-            <div class="contact-item">
-              <strong><i class="fa-solid fa-location-dot"></i> Địa chỉ:</strong>
-              <span>Chợ Xoài Xiêm,Ngãi Xuyên,Trà cú,Trà Vinh</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </Transition>
-  </Teleport>
+          </Transition>
+        </Teleport>
         <!-- Contact Info -->
         <!-- <div class="contact-box">
           <div class="contact-item">
@@ -272,7 +292,7 @@ const closeContactModal = () => {
 
     <!-- Process Section -->
     <div class="process-section">
-      <h2> Quy trình làm việc</h2>
+      <h2>Quy trình làm việc</h2>
       <div class="process-steps">
         <div class="step">
           <div class="step-number">1</div>
@@ -281,9 +301,9 @@ const closeContactModal = () => {
             <p>Trao đổi ý tưởng, phong cách và yêu cầu của bạn</p>
           </div>
         </div>
-        
+
         <div class="step-arrow">→</div>
-        
+
         <div class="step">
           <div class="step-number">2</div>
           <div class="step-content">
@@ -291,9 +311,9 @@ const closeContactModal = () => {
             <p>Triển khai thiết kế theo brief đã thống nhất</p>
           </div>
         </div>
-        
+
         <div class="step-arrow">→</div>
-        
+
         <div class="step">
           <div class="step-number">3</div>
           <div class="step-content">
@@ -301,9 +321,9 @@ const closeContactModal = () => {
             <p>Điều chỉnh theo ý kiến phản hồi của bạn</p>
           </div>
         </div>
-        
+
         <div class="step-arrow">→</div>
-        
+
         <div class="step">
           <div class="step-number">4</div>
           <div class="step-content">
@@ -330,9 +350,8 @@ const closeContactModal = () => {
             <div class="review-stars">⭐⭐⭐⭐⭐</div>
           </div>
           <p class="review-text">
-            "Dịch vụ tuyệt vời! Đội ngũ làm việc chuyên nghiệp, 
-            thiết kế đẹp và đúng ý tôi muốn. Logo mới giúp thương 
-            hiệu của tôi trông chuyên nghiệp hơn rất nhiều."
+            "Dịch vụ tuyệt vời! Đội ngũ làm việc chuyên nghiệp, thiết kế đẹp và đúng ý tôi muốn.
+            Logo mới giúp thương hiệu của tôi trông chuyên nghiệp hơn rất nhiều."
           </p>
         </div>
 
@@ -348,9 +367,8 @@ const closeContactModal = () => {
             <div class="review-stars">⭐⭐⭐⭐⭐</div>
           </div>
           <p class="review-text">
-            "Rất hài lòng với chất lượng thiết kế. Team support 
-            nhiệt tình, chỉnh sửa nhanh. Giá cả hợp lý. 
-            Sẽ quay lại sử dụng dịch vụ lần sau!"
+            "Rất hài lòng với chất lượng thiết kế. Team support nhiệt tình, chỉnh sửa nhanh. Giá cả
+            hợp lý. Sẽ quay lại sử dụng dịch vụ lần sau!"
           </p>
         </div>
 
@@ -366,9 +384,8 @@ const closeContactModal = () => {
             <div class="review-stars">⭐⭐⭐⭐⭐</div>
           </div>
           <p class="review-text">
-            "Thiết kế sáng tạo, độc đáo. File giao đầy đủ, 
-            chất lượng cao. Quy trình làm việc rõ ràng, 
-            minh bạch. Highly recommended!"
+            "Thiết kế sáng tạo, độc đáo. File giao đầy đủ, chất lượng cao. Quy trình làm việc rõ
+            ràng, minh bạch. Highly recommended!"
           </p>
         </div>
       </div>
@@ -376,54 +393,27 @@ const closeContactModal = () => {
 
     <!-- Related Products -->
     <div class="related-section">
-      <h2>🎨 Dịch vụ liên quan</h2>
+      <h2>Dịch vụ liên quan</h2>
       <div class="related-grid">
-        <div class="related-card">
+        <router-link
+          v-for="product in product_seemore"
+          :key="product.categori_id"
+          :to="`/dich-vu-inan/${product.categori_id}`"
+          class="related-card"
+        >
           <div class="related-image">
-            <!-- <img src="/images/service-2.jpg" alt="Thiết kế quảng cáo"> -->
+            <img :src="product.image" :alt="product.title" />
           </div>
           <div class="related-info">
-            <h4>Thiết kế quảng cáo</h4>
-            <p class="related-price">Từ 300.000đ</p>
+            <h4>{{ product.title }}</h4>
+            <p class="related-price">Từ {{ product.price }}</p>
           </div>
-        </div>
-
-        <div class="related-card">
-          <div class="related-image">
-            <!-- <img src="/images/service-3.jpg" alt="Thiết kế túi giấy"> -->
-          </div>
-          <div class="related-info">
-            <h4>Thiết kế túi giấy</h4>
-            <p class="related-price">Từ 500.000đ</p>
-          </div>
-        </div>
-
-        <div class="related-card">
-          <div class="related-image">
-            <!-- <img src="/images/service-4.jpg" alt="Thiết kế menu"> -->
-          </div>
-          <div class="related-info">
-            <h4>Thiết kế menu</h4>
-            <p class="related-price">Từ 400.000đ</p>
-          </div>
-        </div>
-
-        <div class="related-card">
-          <div class="related-image">
-            <!-- <img src="/images/service-5.jpg" alt="Thiết kế brochure"> -->
-          </div>
-          <div class="related-info">
-            <h4>Thiết kế brochure</h4>
-            <p class="related-price">Từ 800.000đ</p>
-          </div>
-        </div>
+        </router-link>
       </div>
     </div>
   </div>
-    <Hotlinefloating style="margin-right:40px ;"/>
+  <Hotlinefloating style="margin-right: 40px" />
 </template>
-
-
 
 <style scoped>
 /* ===== GENERAL ===== */
@@ -443,13 +433,13 @@ const closeContactModal = () => {
 }
 
 .breadcrumb a {
-  color: #4285F4;
+  color: #4285f4;
   text-decoration: none;
   transition: color 0.3s;
 }
 
 .breadcrumb a:hover {
-  color: #3367D6;
+  color: #3367d6;
   text-decoration: underline;
 }
 
@@ -516,12 +506,12 @@ const closeContactModal = () => {
 }
 
 .thumbnail:hover {
-  border-color: #4285F4;
+  border-color: #4285f4;
   transform: scale(1.05);
 }
 
 .thumbnail.active {
-  border-color: #4285F4;
+  border-color: #4285f4;
 }
 
 .thumbnail img {
@@ -541,8 +531,8 @@ const closeContactModal = () => {
   display: inline-block;
   width: fit-content;
   padding: 8px 16px;
-  background: #E8F0FE;
-  color: #4285F4;
+  background: #e8f0fe;
+  color: #4285f4;
   border-radius: 20px;
   font-size: 0.85rem;
   font-weight: 600;
@@ -644,13 +634,13 @@ const closeContactModal = () => {
 }
 
 .package-card:hover {
-  border-color: #4285F4;
+  border-color: #4285f4;
   transform: translateY(-5px);
   box-shadow: 0 10px 20px rgba(66, 133, 244, 0.2);
 }
 
 .package-card.popular {
-  border-color: #4285F4;
+  border-color: #4285f4;
   box-shadow: 0 5px 15px rgba(66, 133, 244, 0.2);
 }
 
@@ -658,7 +648,7 @@ const closeContactModal = () => {
   position: absolute;
   top: 15px;
   right: 15px;
-  background: #4285F4;
+  background: #4285f4;
   color: white;
   padding: 5px 12px;
   border-radius: 20px;
@@ -712,8 +702,7 @@ const closeContactModal = () => {
 }
 
 .btn-order,
-.btn-contact
- {
+.btn-contact {
   padding: 16px 24px;
   border: none;
   border-radius: 10px;
@@ -728,18 +717,18 @@ const closeContactModal = () => {
 }
 
 .btn-order {
-  background: #4285F4;
+  background: #4285f4;
   color: white;
 }
 
 .btn-order:hover {
-  background: #3367D6;
+  background: #3367d6;
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(66, 133, 244, 0.4);
 }
 
 .btn-contact {
-  background: #34A853;
+  background: #34a853;
   color: white;
 }
 
@@ -822,7 +811,7 @@ const closeContactModal = () => {
   font-size: 1.5rem;
   font-weight: 700;
   margin: 0 auto 15px;
-  box-shadow: 0 4px 15px rgb(255, 122, 33);;
+  box-shadow: 0 4px 15px rgb(255, 122, 33);
 }
 
 .step-content h4 {
@@ -839,7 +828,7 @@ const closeContactModal = () => {
 
 .step-arrow {
   font-size: 2rem;
-  color: #4285F4;
+  color: #4285f4;
   font-weight: 700;
 }
 
@@ -915,7 +904,7 @@ const closeContactModal = () => {
 }
 
 .review-stars {
-  color: #FFA000;
+  color: #ffa000;
   font-size: 1.1rem;
 }
 

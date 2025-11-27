@@ -2,13 +2,10 @@
   <div class="slider-container">
     <div class="slider">
       <!-- Slides -->
-      <div 
-        class="slides-wrapper" 
-        :style="{ transform: `translateX(-${currentSlide * 100}%)` }"
-      >
-        <div 
-          v-for="(slide, index) in slides" 
-          :key="index" 
+      <div class="slides-wrapper" :style="{ transform: `translateX(-${currentSlide * 100}%)` }">
+        <div
+          v-for="(slide, index) in slides"
+          :key="index"
           class="slide"
           :style="{ backgroundImage: `url(${slide.image})` }"
         >
@@ -22,20 +19,34 @@
 
       <!-- Navigation Arrows -->
       <button class="slider-arrow prev" @click="prevSlide">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M15 18l-6-6 6-6"/>
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path d="M15 18l-6-6 6-6" />
         </svg>
       </button>
       <button class="slider-arrow next" @click="nextSlide">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M9 18l6-6-6-6"/>
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path d="M9 18l6-6-6-6" />
         </svg>
       </button>
 
       <!-- Dots Indicators -->
       <div class="slider-dots">
-        <button 
-          v-for="(slide, index) in slides" 
+        <button
+          v-for="(slide, index) in slides"
           :key="index"
           class="dot"
           :class="{ active: index === currentSlide }"
@@ -47,20 +58,19 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue'
 
 // Import TẤT CẢ ảnh trong tất cả folder con (** = recursive)
 const images = import.meta.glob('@/assets/images/**/*.{png,jpg,jpeg}', {
   eager: true,
-  import: 'default'
-});
+  import: 'default',
+})
 
 // Helper - gõ đường dẫn đầy đủ
 const img = (path) => {
-  const fullPath = `/src/assets/images/${path}`;
-  return images[fullPath] || '';
-};
-
+  const fullPath = `/src/assets/images/${path}`
+  return images[fullPath] || ''
+}
 
 // Dữ liệu slides mẫu
 const slides = ref([
@@ -68,69 +78,67 @@ const slides = ref([
     image: img('banner/banner8.jpg'),
     title: 'Bộ sưu tập mùa hè 2024',
     description: 'Khám phá những xu hướng thời trang mới nhất',
-    buttonText: 'Mua ngay'
+    buttonText: 'Mua ngay',
   },
   {
-    image: img('banner/banner13.png'),
+    image: img('banner/banner15.png'),
     title: 'Giảm giá đến 50%',
     description: 'Săn sale cực đã với hàng ngàn sản phẩm hot',
-    buttonText: 'Xem ngay'
+    buttonText: 'Xem ngay',
   },
   {
-    image: img('banner/banner12.png'),
+    image: img('banner/banner14.png'),
     title: 'Sản phẩm mới về',
     description: 'Cập nhật những mặt hàng mới nhất hàng tuần',
-    buttonText: 'Khám phá'
+    buttonText: 'Khám phá',
   },
   {
-    image: img('banner/4.jpg'),
+    image: img('banner/banner16.png'),
     title: 'Miễn phí vận chuyển',
     description: 'Cho đơn hàng từ 500.000đ trên toàn quốc',
-    buttonText: 'Mua sắm'
-  }
-]);
+    buttonText: 'Mua sắm',
+  },
+])
 
-const currentSlide = ref(0);
-let autoplayInterval = null;
+const currentSlide = ref(0)
+let autoplayInterval = null
 
 // Chuyển slide tiếp theo
 const nextSlide = () => {
-  currentSlide.value = (currentSlide.value + 1) % slides.value.length;
-};
+  currentSlide.value = (currentSlide.value + 1) % slides.value.length
+}
 
 // Chuyển slide trước
 const prevSlide = () => {
-  currentSlide.value = currentSlide.value === 0 
-    ? slides.value.length - 1 
-    : currentSlide.value - 1;
-};
+  currentSlide.value = currentSlide.value === 0 ? slides.value.length - 1 : currentSlide.value - 1
+}
 
 // Chuyển đến slide cụ thể
 const goToSlide = (index) => {
-  currentSlide.value = index;
-};
+  currentSlide.value = index
+}
 
 // Auto play slider
 const startAutoplay = () => {
   autoplayInterval = setInterval(() => {
-    nextSlide();
-  }, 205000); // Chuyển slide mỗi 5 giây
-};
+    nextSlide()
+  }, 5000) // Chuyển slide mỗi 5 giây
+}
 
 const stopAutoplay = () => {
   if (autoplayInterval) {
-    clearInterval(autoplayInterval);
+    clearInterval(autoplayInterval)
   }
-};
+}
 
 // Lifecycle hooks
 onMounted(() => {
-  startAutoplay();
-});
+  startAutoplay()
+})
 
 onUnmounted(() => {
-  stopAutoplay();
-});
+  stopAutoplay()
+})
 </script>
 
 <style scoped>
@@ -141,8 +149,8 @@ onUnmounted(() => {
   padding: 0 1rem;
 }
 img.resize {
-    width:300px; /* you can use % */
-    height: auto;
+  width: 300px; /* you can use % */
+  height: auto;
 }
 .slider {
   position: relative;
@@ -151,7 +159,6 @@ img.resize {
   overflow: clip;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-
 }
 
 /* Slides Wrapper */
@@ -159,13 +166,12 @@ img.resize {
   display: flex;
   height: 100%;
   transition: transform 0.5s ease-in-out;
-
 }
 
 .slide {
   min-width: 100%;
   height: 100%;
- 
+
   background-size: cover;
   background-position: center;
   display: flex;
