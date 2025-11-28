@@ -2,56 +2,56 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://sometagift.vn/</loc>
+    <loc>https://sometastore.vercel.app/</loc>
     <lastmod>2024-11-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   
   <url>
-    <loc>https://sometagift.vn/san-pham</loc>
+    <loc>https://sometastore.vercel.app/san-pham</loc>
     <lastmod>2024-11-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://sometagift.vn/dich-vu-thiet-ke</loc>
+    <loc>https://sometastore.vercel.app/dich-vu-thiet-ke</loc>
     <lastmod>2024-11-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://sometagift.vn/dich-vu-in-an</loc>
+    <loc>https://sometastore.vercel.app/dich-vu-in-an</loc>
     <lastmod>2024-11-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://sometagift.vn/lien-he</loc>
+    <loc>https://sometastore.vercel.app/lien-he</loc>
     <lastmod>2024-11-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://sometagift.vn/chinh-sach-doi-tra</loc>
+    <loc>https://sometastore.vercel.app/chinh-sach-doi-tra</loc>
     <lastmod>2024-11-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
   
   <url>
-    <loc>https://sometagift.vn/dieu-khoan-su-dung</loc>
+    <loc>https://sometastore.vercel.app/dieu-khoan-su-dung</loc>
     <lastmod>2024-11-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
   
   <url>
-    <loc>https://sometagift.vn/chinh-sach-bao-mat</loc>
+    <loc>https://sometastore.vercel.app/chinh-sach-bao-mat</loc>
     <lastmod>2024-11-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
