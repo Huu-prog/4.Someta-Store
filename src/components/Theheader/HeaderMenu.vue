@@ -11,33 +11,47 @@
     <nav class="nav-menu" :class="{ active: isMenuOpen }">
       <ul>
         <li><router-link class="active" to="/" @click="closeMenu">Trang chủ</router-link></li>
-        
+
         <li class="has-dropdown">
-          <a href="#" @click.prevent="toggleDropdown('products')">Sản phẩm</a>
+          <a href="#" @click.prevent="toggleDropdown('products')">Quà tặng</a>
           <ul class="dropdown-menu" :class="{ show: activeDropdown === 'products' }">
             <li class="has-dropdown__child">
-              <router-link to="/san-pham-silebary/gom-su" @click="closeMenu">Quà tặng gốm sứ</router-link>
+              <router-link to="/san-pham-silebary/gom-su" @click="closeMenu"
+                >Quà tặng gốm sứ</router-link
+              >
             </li>
             <li class="has-dropdown__child">
-              <router-link to="/san-pham-silebary/thuy-tinh" @click="closeMenu">Quà tặng thủy tinh pha lê</router-link>
+              <router-link to="/san-pham-silebary/thuy-tinh" @click="closeMenu"
+                >Quà tặng thủy tinh pha lê</router-link
+              >
             </li>
             <li class="has-dropdown__child">
-              <router-link to="/san-pham-silebary/vinh-danh" @click="closeMenu">Quà tặng vinh danh</router-link>
+              <router-link to="/san-pham-silebary/vinh-danh" @click="closeMenu"
+                >Quà tặng vinh danh</router-link
+              >
             </li>
             <li class="has-dropdown__child">
               <router-link to="/san-pham-silebary/sep" @click="closeMenu">Quà tặng sếp</router-link>
             </li>
             <li class="has-dropdown__child">
-              <router-link to="/san-pham-silebary/do-gia-dung" @click="closeMenu">Quà tặng đồ gia dụng</router-link>
+              <router-link to="/san-pham-silebary/do-gia-dung" @click="closeMenu"
+                >Quà tặng đồ gia dụng</router-link
+              >
             </li>
             <li class="has-dropdown__child">
-              <router-link to="/san-pham-silebary/theo-muc-gia" @click="closeMenu">Quà tặng theo mức giá</router-link>
+              <router-link to="/san-pham-silebary/theo-muc-gia" @click="closeMenu"
+                >Quà tặng theo mức giá</router-link
+              >
             </li>
             <li class="has-dropdown__child">
-              <router-link to="/san-pham-silebary/may-mac" @click="closeMenu">Quà tặng may mặc</router-link>
+              <router-link to="/san-pham-silebary/may-mac" @click="closeMenu"
+                >Quà tặng may mặc</router-link
+              >
             </li>
             <li class="has-dropdown__child">
-              <router-link to="/san-pham-silebary/hop-qua-tang" @click="closeMenu">Hộp quà tặng</router-link>
+              <router-link to="/san-pham-silebary/hop-qua-tang" @click="closeMenu"
+                >Hộp quà tặng</router-link
+              >
             </li>
           </ul>
         </li>
@@ -46,19 +60,29 @@
           <a href="#" @click.prevent="toggleDropdown('design')">DV Thiết Kế ấn phẩm</a>
           <ul class="dropdown-menu" :class="{ show: activeDropdown === 'design' }">
             <li>
-              <router-link to="/thiet-ke-silebary/card-visit" @click="closeMenu">Thiết kế card visit</router-link>
+              <router-link to="/thiet-ke-silebary/card-visit" @click="closeMenu"
+                >Thiết kế card visit</router-link
+              >
             </li>
             <li>
-              <router-link to="/thiet-ke-silebary/to-roi" @click="closeMenu">Thiết kế tờ rơi</router-link>
+              <router-link to="/thiet-ke-silebary/to-roi" @click="closeMenu"
+                >Thiết kế tờ rơi</router-link
+              >
             </li>
             <li>
-              <router-link to="/thiet-ke-silebary/bang-ron" @click="closeMenu">Thiết kế bảng hiệu</router-link>
+              <router-link to="/thiet-ke-silebary/bang-ron" @click="closeMenu"
+                >Thiết kế bảng hiệu</router-link
+              >
             </li>
             <li>
-              <router-link to="/thiet-ke-silebary/thiep-cuoi" @click="closeMenu">Thiết kế thiệp cưới</router-link>
+              <router-link to="/thiet-ke-silebary/thiep-cuoi" @click="closeMenu"
+                >Thiết kế thiệp cưới</router-link
+              >
             </li>
             <li>
-              <router-link to="/thiet-ke-silebary/menu" @click="closeMenu">Thiết kế Menu</router-link>
+              <router-link to="/thiet-ke-silebary/menu" @click="closeMenu"
+                >Thiết kế Menu</router-link
+              >
             </li>
           </ul>
         </li>
@@ -67,16 +91,24 @@
           <a href="#" @click.prevent="toggleDropdown('printing')">DV In Ấn</a>
           <ul class="dropdown-menu" :class="{ show: activeDropdown === 'printing' }">
             <li>
-              <router-link to="/dich-vu-inan/printing-documents" @click="closeMenu">In ấn tài liệu</router-link>
+              <router-link to="/dich-vu-inan/printing-documents" @click="closeMenu"
+                >In ấn tài liệu</router-link
+              >
             </li>
             <li>
-              <router-link to="/dich-vu-inan/Design-and-print" @click="closeMenu">Thiết kế và in ấn quảng cáo</router-link>
+              <router-link to="/dich-vu-inan/Design-and-print" @click="closeMenu"
+                >Thiết kế và in ấn quảng cáo</router-link
+              >
             </li>
             <li>
-              <router-link to="/dich-vu-inan/graphic-printing" @click="closeMenu">In ấn đồ họa</router-link>
+              <router-link to="/dich-vu-inan/graphic-printing" @click="closeMenu"
+                >In ấn đồ họa</router-link
+              >
             </li>
             <li>
-              <router-link to="/dich-vu-inan/Printing-on-other-materials" @click="closeMenu">In ấn chất liệu khác</router-link>
+              <router-link to="/dich-vu-inan/Printing-on-other-materials" @click="closeMenu"
+                >In ấn chất liệu khác</router-link
+              >
             </li>
           </ul>
         </li>
@@ -97,32 +129,32 @@ export default {
   data() {
     return {
       isMenuOpen: false,
-      activeDropdown: null
+      activeDropdown: null,
     }
   },
   methods: {
     toggleMenu() {
-      this.isMenuOpen = !this.isMenuOpen;
+      this.isMenuOpen = !this.isMenuOpen
       // Ngăn scroll khi menu mở
       if (this.isMenuOpen) {
-        document.body.style.overflow = 'hidden';
+        document.body.style.overflow = 'hidden'
       } else {
-        document.body.style.overflow = '';
-        this.activeDropdown = null;
+        document.body.style.overflow = ''
+        this.activeDropdown = null
       }
     },
     closeMenu() {
-      this.isMenuOpen = false;
-      this.activeDropdown = null;
-      document.body.style.overflow = '';
+      this.isMenuOpen = false
+      this.activeDropdown = null
+      document.body.style.overflow = ''
     },
     toggleDropdown(dropdown) {
       if (window.innerWidth <= 768) {
         // Chỉ toggle trên mobile
-        this.activeDropdown = this.activeDropdown === dropdown ? null : dropdown;
+        this.activeDropdown = this.activeDropdown === dropdown ? null : dropdown
       }
-    }
-  }
+    },
+  },
 }
 </script>
 
@@ -203,7 +235,7 @@ export default {
 
 .nav-menu a {
   text-decoration: none;
-  color: #ffffff;
+  color: #000000;
   font-weight: 500;
   font-size: 1.4rem;
   padding: 0.5rem 0;

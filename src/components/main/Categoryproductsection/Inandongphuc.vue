@@ -167,9 +167,9 @@ const router = useRouter()
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  color: #f59e0b;
-  font-size: 15px;
-  font-weight: 600;
+  color: #ffffff;
+  color: #000000;
+  font-size: 1.6rem;
   text-decoration: none;
   transition: all 0.3s ease;
   padding: 8px 16px;
@@ -177,7 +177,7 @@ const router = useRouter()
 }
 
 .view-all-link:hover {
-  background-color: #fef3c7;
+  background-color: #f59e0b;
   gap: 10px;
 }
 

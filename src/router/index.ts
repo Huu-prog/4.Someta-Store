@@ -14,15 +14,16 @@ import Chitietsanphamthietke from '@/components/main/Seemorefeaturedcategories/D
 import AllDichvuinan from '@/components/main/Seemorefeaturedcategories/Dichvuinan/AllDichvuinan.vue'
 import Chitietsanphaminan from '@/components/main/Seemorefeaturedcategories/Dichvuinan/Chitietsanphaminan.vue'
 import About from '@/components/Theheader/About.vue'
-
-
+import Returnpolicy from '@/views/returnpolicy.vue'
+import Terms_of_Use from '@/views/Terms_of_Use.vue'
+import Privacy_Policy from '@/views/Privacy_Policy.vue'
 
 // Define routes với type
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
   },
   {
     path: '/products/:id',
@@ -33,76 +34,83 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/Xemthemsanphamnoibat',
     name: 'Xemthemsanphamnoibat',
-    component:Xemthemsanphamnoibat
+    component: Xemthemsanphamnoibat,
     // props: true  // Pass route params as props
   },
   {
-    path: '/san-pham/:id',  // ← :id là tham số động
+    path: '/san-pham/:id', // ← :id là tham số động
     name: 'Chitietsanphamxemthem',
-    component: Chitietsanphamxemthem
+    component: Chitietsanphamxemthem,
   },
-  
 
   {
     path: '/san-pham-silebary/:categoryId',
     name: 'CategoryProducts',
-    component:AllProductgomsu, // ✅ Dùng chung 1 component
-    props: true
+    component: AllProductgomsu, // ✅ Dùng chung 1 component
+    props: true,
   },
-    {
+  {
     path: '/thiet-ke-silebary/:categorizeId',
     name: 'designservices',
-    component:Dichvuthietke,
-    props: true
+    component: Dichvuthietke,
+    props: true,
   },
-      {
+  {
     path: '/dich-vu-inan/:categori_id',
     name: 'printingservices',
-    component:AllDichvuinan, 
-    props: true
+    component: AllDichvuinan,
+    props: true,
   },
-   {
-    path: '/san-pham-gomsu/:id',  // ← :id là tham số động
+  {
+    path: '/san-pham-gomsu/:id', // ← :id là tham số động
     name: 'Chitietsanphamsilebar',
-    component: Chitietsanphamgomsu
+    component: Chitietsanphamgomsu,
   },
-   {
-    path: '/san-pham-thietke/:id',  // ← :id là tham số động
+  {
+    path: '/san-pham-thietke/:id', // ← :id là tham số động
     name: 'Chitietsanphamthietke',
-    component: Chitietsanphamthietke
+    component: Chitietsanphamthietke,
   },
-    {
-    path: '/san-pham-inan/:id',  // ← :id là tham số động
+  {
+    path: '/san-pham-inan/:id', // ← :id là tham số động
     name: 'Chitietsanphaminan',
-    component:Chitietsanphaminan
+    component: Chitietsanphaminan,
   },
   //trang liên hệ
-   {
-    path: '/lien-he',  // ← :id là tham số động
+  {
+    path: '/lien-he', // ← :id là tham số động
     name: 'Liên hệ',
-    component: Contact
+    component: Contact,
   },
-//trang công ty
+  //trang công ty
 
-    {
-    path: '/about',  // ← :id là tham số động
+  {
+    path: '/about',
     name: 'Về chúng tôi',
-    component: About
+    component: About,
   },
-
-
-
-  
-  
-
-  
-  
+  {
+    path: '/returnpolicy',
+    name: 'Chính sách đổi trả',
+    component: Returnpolicy,
+  },
+  ,
+  {
+    path: '/Terms_of_Use',
+    name: 'Điều khoản sử dụng',
+    component: Terms_of_Use,
+  },
+  {
+    path: '/Privacy_Policy',
+    name: 'Chính sách bảo mật',
+    component: Privacy_Policy,
+  },
 ]
 
 // Create router instance
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes
+  routes,
 })
 
 // Navigation guard (optional)
@@ -117,4 +125,3 @@ router.afterEach(() => {
 })
 
 export default router
-

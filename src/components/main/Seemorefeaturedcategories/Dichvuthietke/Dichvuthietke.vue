@@ -17,7 +17,7 @@
 
         <div class="filter-section">
           <h3 class="filter-title" @click="toggleSection">
-            Sản phẩm nổi bật
+            Quà tặng
             <svg
               class="arrow-icon"
               :class="{ rotate: isOpen }"
@@ -278,7 +278,19 @@
           </div>
         </div>
       </div>
-
+      <!-- BANNER ĐẶT ĐÂY! -->
+      <section class="promo-banner-section">
+        <div class="container">
+          <div class="promo-banner">
+            <!-- <div class="banner-content">
+              <span class="banner-badge">🔥 HOT DEAL</span>
+              <h3>GIẢM GIÁ 50% - CHỈ HÔM NAY!</h3>
+              <p>Thiết kế Logo chuyên nghiệp chỉ từ 500K</p>
+              <button class="cta-button">Xem ngay →</button>
+            </div> -->
+          </div>
+        </div>
+      </section>
       <!-- ============ BENEFITS SECTION ============ -->
       <div class="benefits-section">
         <h2>Ưu Đãi Đặc Biệt</h2>
@@ -318,26 +330,20 @@
       <div class="related-categories-section">
         <h2>Danh Mục Liên Quan</h2>
         <div class="categories-grid">
-          <a href="#" class="category-card">
-            <div class="category-icon-large">🏺</div>
-            <h3>Gốm Sứ Bát Tràng</h3>
-            <p>120 sản phẩm</p>
-          </a>
-          <a href="#" class="category-card">
-            <div class="category-icon-large">👔</div>
-            <h3>Quà Tặng Nhân Viên</h3>
-            <p>89 sản phẩm</p>
-          </a>
-          <a href="#" class="category-card">
-            <div class="category-icon-large">💎</div>
-            <h3>Thủy Tinh Pha Lê</h3>
-            <p>67 sản phẩm</p>
-          </a>
-          <a href="#" class="category-card">
-            <div class="category-icon-large">🎩</div>
-            <h3>Quà Tặng Sếp</h3>
-            <p>54 sản phẩm</p>
-          </a>
+          <router-link
+            v-for="(category, index) in categories_design"
+            :key="index"
+            :to="category.link"
+            class="category-card"
+          >
+            <div class="category-card-image">
+              <img :src="category.image" :alt="category.title" />
+              <div class="category-overlay">
+                <h3 class="category-title">{{ category.title }}</h3>
+                <p class="category-count">{{ category.count }} sản phẩm</p>
+              </div>
+            </div>
+          </router-link>
         </div>
       </div>
 
@@ -348,34 +354,35 @@
           <div class="review-card">
             <div class="stars">⭐⭐⭐⭐⭐</div>
             <p class="review-text">
-              "Sản phẩm rất đẹp và chất lượng. Đóng gói cẩn thận, giao hàng nhanh. Nhân viên tư vấn
-              nhiệt tình. Rất hài lòng và sẽ tiếp tục ủng hộ!"
+              "Mình đặt thiết kế logo cho quán cafe mới. Ban đầu lo lắng vì chưa biết style nào phù
+              hợp, nhưng team tư vấn rất chi tiết. Logo cuối cùng đẹp quá trời! Khách vào quán khen
+              logo đẹp và sang.
             </p>
             <div class="reviewer">
-              <strong>Nguyễn Văn A</strong>
-              <span>CEO - Công ty ABC Technology</span>
+              <strong>Trần Quang Hùng </strong>
+              <span>Chủ quán Cafe</span>
             </div>
           </div>
           <div class="review-card">
             <div class="stars">⭐⭐⭐⭐⭐</div>
             <p class="review-text">
-              "Đã đặt 100 bộ quà tặng cho nhân viên. Chất lượng tuyệt vời, giá cả hợp lý. In logo
-              rất đẹp và chuyên nghiệp. Highly recommended!"
+              "Bộ nhận diện thương hiệu của công ty mình nhờ đội thiết kế làm ra thật sự nổi bật.
+              Sản phẩm hoàn hảo, đội ngũ hỗ trợ nhiệt tình"
             </p>
             <div class="reviewer">
-              <strong>Trần Thị B</strong>
-              <span>Giám đốc Nhân sự - Công ty XYZ</span>
+              <strong>Lê Thị Minh</strong>
+              <span>CEO - Công ty ABC Solutions</span>
             </div>
           </div>
           <div class="review-card">
             <div class="stars">⭐⭐⭐⭐⭐</div>
             <p class="review-text">
-              "Quà tặng đẹp, ý nghĩa. Nhân viên rất thích. Dịch vụ chăm sóc khách hàng tốt. Cảm ơn
-              shop rất nhiều!"
+              "Dịch vụ thiết kế rất tận tâm, từ concept đến sản phẩm cuối cùng đều chỉnh sửa theo ý
+              tôi. Các ấn phẩm marketing đều đẹp và sang trọng, đúng chuẩn thương hiệu!"
             </p>
             <div class="reviewer">
-              <strong>Lê Văn C</strong>
-              <span>HR Manager - Tập đoàn DEF Group</span>
+              <strong>Nguyễn Thị Lan</strong>
+              <span>Designer - Công ty GHI Creative</span>
             </div>
           </div>
         </div>
@@ -388,9 +395,9 @@
           <div class="faq-item">
             <h3>❓ Làm sao để đặt hàng số lượng lớn?</h3>
             <p>
-              Quý khách vui lòng liên hệ hotline 1900-xxxx hoặc email sales@sometagift.com để được
-              tư vấn chi tiết và báo giá ưu đãi cho đơn hàng số lượng lớn. Chúng tôi có chính sách
-              giảm giá đặc biệt cho đơn hàng từ 50 sản phẩm trở lên.
+              Quý khách vui lòng liên hệ hotline 𝟬𝟴𝟲𝟳𝟴𝟭𝟰𝟮𝟰𝟵hoặc email 123someta@gmail.com để được tư
+              vấn chi tiết và báo giá ưu đãi cho đơn hàng số lượng lớn. Chúng tôi có chính sách giảm
+              giá đặc biệt cho đơn hàng từ 50 sản phẩm trở lên.
             </p>
           </div>
           <div class="faq-item">
@@ -433,7 +440,9 @@
           <h2>Cần Tư Vấn Thêm?</h2>
           <p>Đội ngũ chuyên viên của chúng tôi sẵn sàng hỗ trợ bạn 24/7</p>
           <div class="cta-buttons">
-            <a href="tel:1900xxxx" class="btn-primary"> 📞 Gọi Ngay: 0867.814.249 </a>
+            <a href="tel:1900xxxx" class="btn-primary">
+              <i class="fa-solid fa-phone"></i>Gọi Ngay: 0867.814.249
+            </a>
             <!-- <a href="#" class="btn-secondary">
                         💬 Chat Tư Vấn
                     </a> -->
@@ -460,28 +469,6 @@ import { useRoute } from 'vue-router'
 const route = useRoute()
 
 const categorizeId = ref(route.params.categorizeId)
-
-// // Lọc sản phẩm
-// const filteredProducts = computed(() => {
-//   const categorizeId = route.params.categorizeId;
-
-//   // Xử lý và thêm default value
-//   const id = Array.isArray(categorizeId) ? categorizeId[0] : (categorizeId || '');
-
-//   console.log('🔍 Current categorizeId:', id);
-
-//   const products = getProductsByCategory(id);
-
-//   console.log('📦 Filtered products:', products);
-
-//   return products;
-// });
-
-// // Lấy tên category
-// const categoryName = computed(() => {
-//   const category = getCategoryById(categorizeId.value);
-//   return category ? category.name : 'Sản phẩm';
-// });
 
 // ✅ Dùng data trực tiếp
 const products = ref(productsThietke)
@@ -546,13 +533,6 @@ watch(
 // Lấy categorizeId từ route
 const currentCategoryId = computed(() => route.params.categorizeId)
 
-// Lấy TOÀN BỘ thông tin category
-// const currentCategory = computed(() => {
-//   if (!currentCategoryId.value) return null;
-
-//   return categories.find(cat => cat.id === currentCategoryId.value);
-// });
-
 // Filter products
 const displayedtitle = computed(() => {
   if (!currentCategoryId.value) {
@@ -602,6 +582,33 @@ const goToPage = (page) => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 }
+
+const categories_design = [
+  {
+    title: 'Thiết kế tờ rơi',
+    count: 110,
+    link: '/thiet-ke-silebary/printing-documents',
+    image: 'https://images.unsplash.com/photo-1542744094-3a31f272c490?w=800&q=80',
+  },
+  {
+    title: 'Thiết kế card-visit',
+    count: 110,
+    link: '/thiet-ke-silebary/card-visit',
+    image: 'https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=800&q=80',
+  },
+  {
+    title: 'Thiết kế băng ron',
+    count: 85,
+    link: '/thiet-ke-silebary/bang-ron',
+    image: 'https://images.unsplash.com/photo-1555421689-491a97ff2040?w=800&q=80',
+  },
+  {
+    title: 'Thiết kế menu',
+    count: 95,
+    link: '/thiet-ke-silebary/menu',
+    image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&q=80',
+  },
+]
 </script>
 
 <style scoped>
@@ -1220,55 +1227,175 @@ const goToPage = (page) => {
 
 /* ============ RELATED CATEGORIES SECTION ============ */
 .related-categories-section {
-  margin: 60px 0;
+  padding: 4rem 0;
+  background-color: #f8f9fa;
 }
 
 .related-categories-section h2 {
-  font-size: 32px;
-  color: #333;
-  margin-bottom: 30px;
   text-align: center;
+  font-size: 2rem;
   font-weight: 700;
+  margin-bottom: 3rem;
+  color: #2c3e50;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.related-categories-section h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 2px;
 }
 
 .categories-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
 .category-card {
-  background: white;
-  padding: 30px;
+  position: relative;
   border-radius: 12px;
-  text-align: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+  background: white;
   text-decoration: none;
-  color: inherit;
   display: block;
 }
 
 .category-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.category-card-image {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+}
+
+.category-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.category-card:hover .category-card-image img {
+  transform: scale(1.1);
+}
+
+.category-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.7) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  text-align: center;
+  transition: background 0.3s ease;
+}
+
+.category-card:hover .category-overlay {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.8) 100%);
+}
+
+.category-title {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  transition: transform 0.3s ease;
+}
+
+.category-card:hover .category-title {
   transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
-.category-icon-large {
-  font-size: 56px;
-  margin-bottom: 15px;
+.category-count {
+  color: white;
+  font-size: 1rem;
+  margin: 0;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
 }
 
-.category-card h3 {
-  font-size: 18px;
-  color: #333;
-  margin-bottom: 8px;
-  font-weight: 600;
+.category-card:hover .category-count {
+  opacity: 1;
 }
 
-.category-card p {
-  color: #666;
-  font-size: 14px;
+/* Responsive */
+@media (max-width: 1024px) {
+  .categories-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .related-categories-section h2 {
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
+  }
+
+  .categories-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .category-card-image {
+    height: 250px;
+  }
+
+  .category-title {
+    font-size: 1.2rem;
+  }
+
+  .category-count {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .categories-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .category-card-image {
+    height: 220px;
+  }
+
+  .category-title {
+    font-size: 1.1rem;
+  }
+
+  .category-count {
+    font-size: 0.85rem;
+  }
+
+  .category-overlay {
+    padding: 1.5rem;
+  }
 }
 
 /* ============ REVIEWS SECTION ============ */
@@ -1436,7 +1563,34 @@ const goToPage = (page) => {
   background: white;
   color: #ff6600;
 }
+.promo-banner-section {
+  padding: 2rem 0;
+  background: #f8f9fa;
+}
 
+.promo-banner {
+  background: url('@/assets/images/banner/banner15.png');
+  border-radius: 16px;
+  height: 450px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.banner-content h3 {
+  color: white;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.cta-button {
+  background: white;
+  color: #667eea;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 30px;
+  font-weight: 700;
+  cursor: pointer;
+}
 /* ============ BENEFITS SECTION ============ */
 .benefits-section {
   margin: 60px 0;
@@ -1523,7 +1677,7 @@ const goToPage = (page) => {
 
 /* ============ RESPONSIVE DESIGN ============ */
 
-/* Tablet (768px - 1024px) */
+/* Tablet (768px - 1024px)
 @media (max-width: 1024px) {
   .features-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1551,7 +1705,7 @@ const goToPage = (page) => {
   .faq-section h2 {
     font-size: 28px;
   }
-}
+} */
 
 /* Mobile (max-width: 767px) */
 @media (max-width: 767px) {

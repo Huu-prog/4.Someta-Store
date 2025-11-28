@@ -1,28 +1,41 @@
 <script>
-import HeaderMenu from './HeaderMenu.vue';
+import HeaderMenu from './HeaderMenu.vue'
 </script>
 <template>
   <header class="header">
     <div class="header-container">
       <!-- Logo -->
       <div class="logo">
-        <img src="@/assets/images/logo.png" alt="">
+        <img src="@/assets/images/logo.png" alt="" />
         <h1>Someta Gift</h1>
       </div>
 
       <!-- Navigation Menu -->
       <HeaderMenu />
 
-      
-      <div  @click="handleclickmessage" class="header-actions">
+      <div @click="handleclickmessage" class="header-actions">
         <button class="icon-btn search-btn">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
             <circle cx="11" cy="11" r="8"></circle>
             <path d="m21 21-4.35-4.35"></path>
           </svg>
         </button>
         <button class="icon-btn cart-btn">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
             <circle cx="9" cy="21" r="1"></circle>
             <circle cx="20" cy="21" r="1"></circle>
             <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
@@ -30,7 +43,14 @@ import HeaderMenu from './HeaderMenu.vue';
           <span class="cart-count">0</span>
         </button>
         <button class="icon-btn user-btn">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
             <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
             <circle cx="12" cy="7" r="4"></circle>
           </svg>
@@ -58,28 +78,30 @@ import HeaderMenu from './HeaderMenu.vue';
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref } from 'vue'
 
-const mobileMenuOpen = ref(false);
+const mobileMenuOpen = ref(false)
 
 const toggleMobileMenu = () => {
-  mobileMenuOpen.value = !mobileMenuOpen.value;
-};
-
+  mobileMenuOpen.value = !mobileMenuOpen.value
+}
 
 const handleclickmessage = () => {
-  return alert ('Tính năng đang cập nhật')
+  return alert('Tính năng đang cập nhật')
 }
 </script>
 
 <style scoped>
 .header {
-  background: #ffbb27;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 80px; /* ← Chiều cao header */
   z-index: 1000;
-  
+  background: #ffbb27;
+  margin: 0;
 }
 
 .header-container {
@@ -109,7 +131,6 @@ const handleclickmessage = () => {
   transform: scale(1.05);
 }
 
-
 .logo h1 {
   font-size: 1.5rem;
   font-weight: 700;
@@ -122,7 +143,6 @@ const handleclickmessage = () => {
 .logo h1:hover {
   color: #ffffff;
 }
-
 
 /* Header Actions */
 .header-actions {

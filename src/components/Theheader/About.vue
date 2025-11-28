@@ -1,5 +1,3 @@
-
-
 <template>
   <div class="about-page">
     <!-- Hero Section -->
@@ -7,7 +5,9 @@
       <div class="hero-overlay"></div>
       <div class="hero-content">
         <h1 class="hero-title">Về Chúng Tôi</h1>
-        <p class="hero-subtitle">Someta - Đối tác tin cậy trong lĩnh vực in ấn và thiết kế chuyên nghiệp</p>
+        <p class="hero-subtitle">
+          Someta - Đối tác tin cậy trong lĩnh vực in ấn và thiết kế chuyên nghiệp
+        </p>
       </div>
     </section>
 
@@ -16,15 +16,19 @@
       <div class="container">
         <div class="intro-grid">
           <div class="intro-image">
-            <img src="@/assets/images/someta.jpg" alt="Someta Company">
+            <img src="@/assets/images/someta.jpg" alt="Someta Company" />
           </div>
           <div class="intro-content">
             <h2 class="section-title">Giới Thiệu Về Someta</h2>
             <p class="intro-text">
-              <strong>Someta</strong> là công ty hàng đầu chuyên sản xuất và cung cấp các sản phẩm in ấn, thiết kế chuyên nghiệp với hơn 10 năm kinh nghiệm trong ngành.
+              <strong>Someta</strong> là đơn vị chuyên sản xuất và cung cấp các sản phẩm in ấn,
+              thiết kế chuyên nghiệp với hơn 10 năm kinh nghiệm trong ngành.
             </p>
             <p class="intro-text">
-              Chúng tôi tự hào mang đến cho khách hàng những sản phẩm chất lượng cao, dịch vụ tận tâm và giá cả cạnh tranh nhất thị trường. Với đội ngũ nhân viên giàu kinh nghiệm và hệ thống máy móc hiện đại, Someta cam kết đáp ứng mọi nhu cầu in ấn từ cá nhân đến doanh nghiệp.
+              Chúng tôi tự hào mang đến cho khách hàng những sản phẩm chất lượng cao, dịch vụ tận
+              tâm và giá cả cạnh tranh nhất thị trường. Với đội ngũ nhân viên giàu kinh nghiệm và hệ
+              thống máy móc hiện đại, Someta cam kết đáp ứng mọi nhu cầu in ấn từ cá nhân đến doanh
+              nghiệp.
             </p>
           </div>
         </div>
@@ -38,12 +42,18 @@
           <div class="vm-card">
             <div class="vm-icon">🎯</div>
             <h3>Tầm Nhìn</h3>
-            <p>Trở thành công ty in ấn và thiết kế hàng đầu Việt Nam, mang đến giá trị vượt trội cho khách hàng thông qua chất lượng sản phẩm và dịch vụ xuất sắc.</p>
+            <p>
+              Trở thành công ty in ấn và thiết kế hàng đầu Việt Nam, mang đến giá trị vượt trội cho
+              khách hàng thông qua chất lượng sản phẩm và dịch vụ xuất sắc.
+            </p>
           </div>
           <div class="vm-card">
             <div class="vm-icon">🚀</div>
             <h3>Sứ Mệnh</h3>
-            <p>Cung cấp giải pháp in ấn toàn diện, sáng tạo và chuyên nghiệp, đồng hành cùng sự phát triển của khách hàng với tinh thần trách nhiệm và đổi mới.</p>
+            <p>
+              Cung cấp giải pháp in ấn toàn diện, sáng tạo và chuyên nghiệp, đồng hành cùng sự phát
+              triển của khách hàng với tinh thần trách nhiệm và đổi mới.
+            </p>
           </div>
         </div>
       </div>
@@ -110,7 +120,9 @@
           <div class="service-card">
             <div class="service-icon">🎨</div>
             <h3>Thiết Kế Đồ Họa</h3>
-            <p>Thiết kế Logo, Branding, Card visit, Catalogue và mọi ấn phẩm quảng cáo chuyên nghiệp</p>
+            <p>
+              Thiết kế Logo, Branding, Card visit, Catalogue và mọi ấn phẩm quảng cáo chuyên nghiệp
+            </p>
           </div>
           <div class="service-card">
             <div class="service-icon">🖨️</div>
@@ -163,7 +175,9 @@
           <p>Liên hệ ngay với chúng tôi để nhận tư vấn và báo giá chi tiết</p>
           <div class="cta-buttons">
             <router-link to="/lien-he" class="btn btn-primary">Liên Hệ Ngay</router-link>
-            <router-link to="/Xemthemsanphamnoibat" class="btn btn-secondary">Xem Sản Phẩm</router-link>
+            <router-link to="/Xemthemsanphamnoibat" class="btn btn-secondary"
+              >Xem Sản Phẩm</router-link
+            >
           </div>
         </div>
       </div>
@@ -176,8 +190,8 @@ export default {
   name: 'AboutUs',
   mounted() {
     // Scroll to top khi vào trang
-    window.scrollTo(0, 0);
-  }
+    window.scrollTo(0, 0)
+  },
 }
 </script>
 
@@ -281,7 +295,7 @@ export default {
 /* Vision & Mission */
 .vision-mission-section {
   padding: 80px 0;
-  background:rgb(255, 122, 33);
+  background: rgb(255, 122, 33);
 }
 
 .vm-grid {
@@ -334,7 +348,9 @@ export default {
   border-radius: 12px;
   text-align: center;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .value-card:hover {
@@ -362,7 +378,7 @@ export default {
 /* Stats Section */
 .stats-section {
   padding: 80px 0;
-  background:rgb(255, 122, 33);
+  background: rgb(255, 122, 33);
 }
 
 .stats-grid {

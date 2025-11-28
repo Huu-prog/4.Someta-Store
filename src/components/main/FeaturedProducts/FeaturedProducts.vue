@@ -35,27 +35,24 @@
               {{ product.badge }}
             </span>
 
-            <img 
-              :src="product.image" 
-              :alt="product.name"
-              class="product-image"
-            />
+            <img :src="product.image" :alt="product.name" class="product-image" />
 
             <!-- Overlay on hover -->
-             <router-link  class="active" :to="`/products/${products.id}`">
+            <router-link class="active" :to="`/products/${products.id}`">
               <div class="image-overlay">
-              
-              <button @click="$emit('productClick', product.id)" 
-            class="view-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                  <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
-                  <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
-                </svg>
-                Xem chi tiết
-              </button>
-            
-            </div>
-              </router-link>
+                <button @click="$emit('productClick', product.id)" class="view-btn">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                    <path
+                      fill-rule="evenodd"
+                      d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  Xem chi tiết
+                </button>
+              </div>
+            </router-link>
           </div>
 
           <!-- Product Info -->
@@ -67,35 +64,38 @@
       </div>
 
       <!-- View More Button -->
-      <router-link to="Xemthemsanphamnoibat"> 
+      <router-link to="Xemthemsanphamnoibat">
         <div class="view-more-wrapper">
-        <button class="view-more-btn" @click="handleViewMore">
-          Xem thêm sản phẩm
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
-          </svg>
-        </button>
-      </div>
+          <button class="view-more-btn" @click="handleViewMore">
+            Xem thêm sản phẩm
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+              <path
+                fill-rule="evenodd"
+                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </button>
+        </div>
       </router-link>
     </div>
   </div>
-
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed } from 'vue'
 
 const props = defineProps({
   products: {
     type: Array,
-    required: true
-  }
-});
+    required: true,
+  },
+})
 
-const emit = defineEmits(['productClick', 'viewMore']);
+const emit = defineEmits(['productClick', 'viewMore'])
 
 // Active tab
-const activeTab = ref('all');
+const activeTab = ref('all')
 
 // Filter tabs
 const tabs = [
@@ -103,26 +103,26 @@ const tabs = [
   { id: 'design', label: 'Thiết kế' },
   { id: 'printing', label: 'In ấn' },
   { id: 'gift', label: 'Quà tặng' },
-  { id: 'office', label: 'Văn phòng' }
-];
+  { id: 'office', label: 'Văn phòng' },
+]
 
 // Filtered products
 const filteredProducts = computed(() => {
   if (activeTab.value === 'all') {
-    return props.products;
+    return props.products
   }
-  return props.products.filter(p => p.type === activeTab.value);
-});
+  return props.products.filter((p) => p.type === activeTab.value)
+})
 
 // Handle product click
 const handleProductClick = (productId) => {
-  emit('productClick', productId);
-};
+  emit('productClick', productId)
+}
 
 // Handle view more
 const handleViewMore = () => {
-  emit('viewMore');
-};
+  emit('viewMore')
+}
 </script>
 
 <style scoped>
@@ -177,13 +177,13 @@ const handleViewMore = () => {
 }
 
 .filter-btn:hover {
-  border-color: #3b82f6;
-  color: #3b82f6;
+  border-color: #f59e0b;
+  color: #f59e0b;
 }
 
 .filter-btn.active {
-  background-color: #3b82f6;
-  border-color: #3b82f6;
+  background-color: #f59e0b;
+  border-color: #f59e0b;
   color: #ffffff;
 }
 
@@ -297,7 +297,7 @@ const handleViewMore = () => {
 }
 
 .view-btn:hover {
-  background-color: #3b82f6;
+  background-color: #f59e0b;
   color: #ffffff;
 }
 
@@ -336,7 +336,7 @@ const handleViewMore = () => {
 }
 
 .product-card:hover .product-name {
-  color: #3b82f6;
+  color: #f59e0b;
 }
 
 /* View More Button */
@@ -351,8 +351,8 @@ const handleViewMore = () => {
   gap: 10px;
   padding: 14px 36px;
   background-color: #ffffff;
-  color: #3b82f6;
-  border: 2px solid #3b82f6;
+  color: #f59e0b;
+  border: 2px solid #f59e0b;
   border-radius: 50px;
   font-size: 16px;
   font-weight: 600;
@@ -361,7 +361,7 @@ const handleViewMore = () => {
 }
 
 .view-more-btn:hover {
-  background-color: #3b82f6;
+  background-color: #f59e0b;
   color: #ffffff;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
