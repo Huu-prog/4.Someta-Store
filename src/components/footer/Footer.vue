@@ -70,44 +70,33 @@
         <div class="footer-column">
           <h4 class="footer-title">Quà Tặng</h4>
           <ul class="footer-links">
-            <li class="has-dropdown__child">
-              <router-link to="/san-pham-silebary/gom-su" @click="closeMenu"
-                >Quà tặng gốm sứ</router-link
+          <li class="has-dropdown__child">
+              <router-link to="/san-pham-silebary/qua-tang-phat-giao" @click="closeMenu"
+                >Quà tặng phật giáo</router-link
               >
             </li>
             <li class="has-dropdown__child">
-              <router-link to="/san-pham-silebary/thuy-tinh" @click="closeMenu"
-                >Quà tặng thủy tinh pha lê</router-link
+              <router-link to="/san-pham-silebary/qua-tang-dai-hoi" @click="closeMenu"
+                >Quà tặng đại hội</router-link
               >
             </li>
             <li class="has-dropdown__child">
-              <router-link to="/san-pham-silebary/vinh-danh" @click="closeMenu"
-                >Quà tặng vinh danh</router-link
+              <router-link to="/san-pham-silebary/qua-tang-khach-hang" @click="closeMenu"
+                >Quà tặng khách hàng</router-link
+              >
+            </li>
+    
+            <li class="has-dropdown__child">
+              <router-link to="/san-pham-silebary/qua-tang-cong-doan" @click="closeMenu"
+                >Quà tặng công đoàn</router-link
               >
             </li>
             <li class="has-dropdown__child">
-              <router-link to="/san-pham-silebary/sep" @click="closeMenu">Quà tặng sếp</router-link>
-            </li>
-            <li class="has-dropdown__child">
-              <router-link to="/san-pham-silebary/do-gia-dung" @click="closeMenu"
-                >Quà tặng đồ gia dụng</router-link
+              <router-link to="/san-pham-silebary/qua-tang-nhan-vien" @click="closeMenu"
+                >Quà tặng nhân viên</router-link
               >
             </li>
-            <li class="has-dropdown__child">
-              <router-link to="/san-pham-silebary/theo-muc-gia" @click="closeMenu"
-                >Quà tặng theo mức giá</router-link
-              >
-            </li>
-            <li class="has-dropdown__child">
-              <router-link to="/san-pham-silebary/may-mac" @click="closeMenu"
-                >Quà tặng may mặc</router-link
-              >
-            </li>
-            <li class="has-dropdown__child">
-              <router-link to="/san-pham-silebary/hop-qua-tang" @click="closeMenu"
-                >Hộp quà tặng</router-link
-              >
-            </li>
+   
           </ul>
         </div>
 

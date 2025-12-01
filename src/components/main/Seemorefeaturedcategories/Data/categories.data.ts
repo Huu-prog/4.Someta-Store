@@ -2,67 +2,40 @@
 import type { Category } from '@/types/product.types';
 
 export const categories: Category[] = [
-  { 
-    id: 'gom-su', 
-    name: 'Quà tặng gốm sứ', 
-    title:'Quà tặng gốm sứ – Sang trọng, tinh tế và bền bỉ',
-    content:'Quà tặng gốm sứ luôn được đánh giá cao nhờ độ bền, tính thẩm mỹ và sự sang trọng. Các sản phẩm như ly sứ, bình hoa, bộ chén dĩa, tượng gốm… đều phù hợp làm quà tri ân khách hàng, quà tặng doanh nghiệp hoặc sự kiện. Thiết kế tinh tế, dễ in logo giúp thương hiệu của bạn nổi bật và tạo ấn tượng lâu dài.',
-    route: '/products/gom-su'
-  },
-  { 
-    id: 'thuy-tinh', 
-    name: 'Quà tặng thủy tinh pha lê', 
-     title:'Quà tặng thủy tinh pha lê – Đẳng cấp, cao cấp, sang trọng',
-    content:'Quà tặng pha lê là lựa chọn hàng đầu trong các dịp quan trọng. Với độ trong suốt tinh khiết và hoa văn sắc nét, sản phẩm pha lê như cúp, ly, đĩa hoặc quà décor thể hiện sự chuyên nghiệp và trân trọng đối với người nhận. Đây là dòng quà tặng cao cấp giúp tôn vinh giá trị thương hiệu.',
-    route: '/products/thuy-tinh'
-  },
-  { 
-    id: 'vinh-danh', 
-    name: 'Quà tặng vinh danh', 
-     title:'Quà tặng vinh danh – Tôn vinh giá trị, ghi dấu thành tựu',
-    content:'Kỷ niệm chương, cúp vinh danh, tượng lưu niệm là những sản phẩm không thể thiếu trong lễ trao thưởng. Những mẫu thiết kế sang trọng giúp khắc ghi thành tựu, tạo dấu ấn trong lòng người nhận. Quà tặng vinh danh rất phù hợp cho doanh nghiệp, trường học, tổ chức và các sự kiện lớn.',
-    route: '/products/vinh-danh'
-  },
-  { 
-    id: 'nhan-vien', 
-    name: 'Quà tặng nhân viên', 
-     title:'Quà tặng nhân viên – Gắn kết đội ngũ, lan tỏa tinh thần doanh nghiệp',
-    content:'Quà tặng nhân viên giúp nâng cao tinh thần làm việc và giá trị nội bộ doanh nghiệp. Những món quà thiết thực như bình giữ nhiệt, balo, áo thun, bộ văn phòng phẩm… không chỉ hữu ích mà còn giúp xây dựng hình ảnh thương hiệu chuyên nghiệp và thân thiện.',
-    route: '/products/nhan-vien'
-  },
-  { 
-    id: 'sep', 
-    name: 'Quà tặng sếp', 
-     title:'Quà tặng sếp – Lịch sự, đẳng cấp, thể hiện sự tôn trọng',
-    content:'Tặng sếp cần sự tinh tế. Các sản phẩm cao cấp như bút ký, tranh phong thủy, tượng décor, đồng hồ để bàn hay vật phẩm phong thủy sẽ là lựa chọn hoàn hảo. Đây đều là quà tặng thể hiện sự trân trọng và lời chúc thành công, thăng tiến.',
-    route: '/products/sep'
-  },
-  { 
-    id: 'do-gia-dung', 
-    name: 'Quà tặng đồ gia dụng', 
-     title:'Quà tặng đồ gia dụng – Tiện ích, thiết thực, phù hợp mọi gia đình',
-    content:'Đồ gia dụng luôn nằm trong top quà tặng được lựa chọn nhiều nhất nhờ tính hữu dụng cao. Các sản phẩm như ấm siêu tốc, nồi điện mini, quạt, đèn hoặc bộ dụng cụ nhà bếp mang đến sự tiện lợi cho người dùng và phù hợp với nhiều đối tượng khách hàng khác nhau.',
-    route: '/products/do-gia-dung'
-  },
-  { 
-    id: 'theo-muc-gia', 
-    name: 'Quà tặng theo mức giá', 
-     title:'Quà tặng theo mức giá – Dễ chọn, phù hợp ngân sách doanh nghiệp',
-    content:'Doanh nghiệp có thể lựa chọn quà tặng theo từng mức giá: dưới 100k, 200k, 300k, 500k hoặc theo yêu cầu riêng. Danh mục được lọc rõ ràng giúp doanh nghiệp dễ dàng chọn sản phẩm phù hợp ngân sách mà vẫn đảm bảo giá trị, tính thẩm mỹ và tính ứng dụng.',
-    route: '/products/theo-muc-gia'
-  },
-  { 
-    id: 'may-mac', 
-    name: 'Quà tặng may mặc', 
-     title:'Quà tặng may mặc – In thêu logo, quảng bá thương hiệu hiệu quả',
-    content:'Các sản phẩm may mặc như áo thun, áo polo, áo khoác, nón… luôn được doanh nghiệp ưa chuộng. Quà tặng may mặc dễ thiết kế theo bộ nhận diện thương hiệu, giúp lan tỏa hình ảnh doanh nghiệp rộng rãi và tạo sự đồng nhất trong các sự kiện, chiến dịch marketing.',
-    route: '/products/may-mac'
-  },
-  { 
-    id: 'hop-qua-tang', 
-    name: 'Hộp quà tặng', 
-     title:'Hộp quà tặng – Sang trọng, tinh tế, phù hợp mọi dịp',
-    content:'Hộp quà tặng cao cấp bao gồm nhiều món sản phẩm kết hợp như trà, cà phê, bánh, phụ kiện hoặc đồ décor. Đóng gói đẹp, sang trọng, phù hợp làm quà tặng Tết, quà đối tác, quà khách hàng và các dịp lễ trong năm. Thiết kế theo yêu cầu và hỗ trợ in logo.',
-    route: '/products/hop-qua-tang'
-  }
+ { 
+  id: 'qua-tang-phat-giao', 
+  name: 'Quà tặng phật giáo', 
+  title: 'Quà tặng phật giáo – Trang nghiêm, ý nghĩa tâm linh',
+  content: 'Quà tặng phật giáo mang ý nghĩa tâm linh sâu sắc, thích hợp cho các dịp lễ Phật, tri ân hay tặng người tu học. Các sản phẩm như tượng Phật, chuỗi niệm, tranh Phật giáo, nhang thơm… không chỉ thể hiện sự tôn kính mà còn mang đến sự bình an, may mắn. Thiết kế trang nghiêm, chất lượng cao giúp món quà thêm ý nghĩa và giá trị.',
+  route: '/products/qua-tang-phat-giao'
+},
+{ 
+  id: 'qua-tang-dai-hoi', 
+  name: 'Quà tặng đại hội', 
+  title: 'Quà tặng đại hội – Chuyên nghiệp, ấn tượng và đẳng cấp',
+  content: 'Quà tặng đại hội cần thể hiện sự chuyên nghiệp và đẳng cấp của sự kiện. Các sản phẩm như túi quà hội nghị, bút ký cao cấp, sổ tay, cốc giữ nhiệt, huy chương… đều có thể in logo và thông điệp của chương trình. Món quà phù hợp sẽ giúp tăng giá trị sự kiện và để lại ấn tượng tốt đẹp với đại biểu tham dự.',
+  route: '/products/qua-tang-dai-hoi'
+},
+{ 
+  id: 'qua-tang-khach-hang', 
+  name: 'Quà tặng khách hàng', 
+  title: 'Quà tặng khách hàng – Tri ân và gắn kết lòng trung thành',
+  content: 'Quà tặng khách hàng là cách thể hiện sự tri ân và xây dựng mối quan hệ bền vững. Các sản phẩm như bộ quà tết, giỏ quà cao cấp, sản phẩm công nghệ, đồ dùng văn phòng… đều có thể tùy chỉnh theo thương hiệu. Món quà ý nghĩa sẽ giúp doanh nghiệp ghi điểm trong lòng khách hàng và tăng cường lòng trung thành.',
+  route: '/products/qua-tang-khach-hang'
+},
+{ 
+  id: 'qua-tang-cong-doan', 
+  name: 'Quà tặng công đoàn', 
+  title: 'Quà tặng công đoàn – Thể hiện sự quan tâm đến người lao động',
+  content: 'Quà tặng công đoàn thể hiện sự quan tâm của doanh nghiệp đến đời sống người lao động. Các sản phẩm như túi quà tết, giỏ quà sinh nhật, phiếu mua hàng, đồ gia dụng… phù hợp với nhiều dịp khác nhau. Món quà ý nghĩa sẽ giúp động viên tinh thần và gắn kết tập thể trong công ty.',
+  route: '/products/qua-tang-cong-doan'
+},
+{ 
+  id: 'qua-tang-nhan-vien', 
+  name: 'Quà tặng nhân viên', 
+  title: 'Quà tặng nhân viên – Động viên và ghi nhận công sức',
+  content: 'Quà tặng nhân viên là cách thể hiện sự trân trọng và ghi nhận đóng góp của đội ngũ. Các sản phẩm như voucher du lịch, đồng hồ, túi xách, thiết bị công nghệ… đều tạo động lực làm việc và tăng sự gắn bó. Lựa chọn quà phù hợp sẽ giúp nâng cao tinh thần và hiệu suất làm việc của nhân viên.',
+  route: '/products/qua-tang-nhan-vien'
+},
+
 ];

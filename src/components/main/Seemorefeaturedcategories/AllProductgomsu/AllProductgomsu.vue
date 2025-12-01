@@ -136,55 +136,62 @@
 
         <!-- Products Grid -->
         <!-- <h1 style="color: orange;">Tất cả sản phẩm! Quà tặng: {{ categoryId }}</h1> -->
-        <div class="products-grid">
-          <div
-            v-for="product in filteredProducts"
-            :key="product.id"
-            class="product-card"
-            @click="handleProductClick(product.id)"
-          >
-            <!-- Product Image -->
-            <div class="product-image-wrapper">
-              <!-- Badge -->
-              <span
-                v-if="product.badge"
-                class="product-badge"
-                :class="`badge-${product.badgeType}`"
-              >
-                {{ product.badge }}
-              </span>
+     <div class="products-grid">
+  <div
+    v-for="product in filteredProducts"
+    :key="product.id"
+    class="product-card"
+    @click="handleProductClick(product.id)"
+  >
+    <!-- Product Image -->
+    <div class="product-image-wrapper">
+      <!-- Badge -->
+      <span
+        v-if="product.badge"
+        class="product-badge"
+        :class="`badge-${product.badgeType}`"
+      >
+        {{ product.badge }}
+      </span>
 
-              <img :src="product.image" :alt="product.name" class="product-image" />
+      <img :src="product.image" :alt="product.name" class="product-image" />
 
-              <!-- Overlay on hover -->
+      <!-- Logo - Thêm phần này -->
+      <img 
+        v-if="product.logo" 
+        :src="product.logo" 
+        alt="Logo" 
+        class="product-logo" 
+      />
 
-              <div class="image-overlay">
-                <router-link class="active" :to="`/san-pham-gomsu/${product.id}`">
-                  <button class="view-btn">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                      <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-                      <path
-                        fill-rule="evenodd"
-                        d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                    Xem chi tiết
-                  </button>
-                </router-link>
-              </div>
-            </div>
+      <!-- Overlay on hover -->
+      <div class="image-overlay">
+        <router-link class="active" :to="`/san-pham-gomsu/${product.id}`">
+          <button class="view-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+              <path
+                fill-rule="evenodd"
+                d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            Xem chi tiết
+          </button>
+        </router-link>
+      </div>
+    </div>
 
-            <!-- Product Info -->
-            <div class="product-info">
-              <h3 class="product-name">{{ product.name }}</h3>
+    <!-- Product Info -->
+    <div class="product-info">
+      <h3 class="product-name">{{ product.name }}</h3>
 
-              <div class="product-price">
-                <span class="new-price">{{ product.price }}</span>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="product-price">
+        <span class="new-price">{{ product.price }}</span>
+      </div>
+    </div>
+  </div>
+</div>
 
         <!-- PAGINATION - CHỈ 5 NÚT -->
         <div class="pagination">
@@ -632,6 +639,19 @@ const categories_gom_su = [
 </script>
 
 <style scoped>
+.product-logo {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 8px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
 .product-section {
   background-color: #f8f8f8;
   padding: 20px 0;
@@ -900,7 +920,7 @@ const categories_gom_su = [
 /* Products Grid - 5 columns */
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 2fr);
   gap: 20px;
   margin-bottom: 30px;
 }

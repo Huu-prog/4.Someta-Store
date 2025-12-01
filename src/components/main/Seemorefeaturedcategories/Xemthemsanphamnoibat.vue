@@ -17,7 +17,7 @@
 
         <div class="filter-section">
           <h3 class="filter-title" @click="toggleSection">
-            Danh mục quà tặng
+            Quà tặng
             <svg
               class="arrow-icon"
               :class="{ rotate: isOpen }"
@@ -104,7 +104,7 @@
 
         <div class="filter-section">
           <h3 class="filter-title">Sản phẩm khuyến mãi</h3>
-          <img src="@/assets/images/banner/banner18.png" alt="" />
+          <img src="@/assets/images/banner/banner19.png" alt="" />
         </div>
       </aside>
 
